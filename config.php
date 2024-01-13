@@ -1,7 +1,7 @@
 <?php
 // config.php
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
+define('DB_USERNAME', 'rayane');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'marvel_fans');
 

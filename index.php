@@ -64,6 +64,7 @@ session_start();
               <option value="public/ironman.png">Iron Man</option>
               <option value="public/spiderman.png">Spider-Man</option>
               <option value="public/the-flash.png">The Flash</option>
+                <option value="public/selim.png">The Selim du 95</option>
               <!-- Ajoutez les autres options d'avatar ici -->
             </select>
           </div>
