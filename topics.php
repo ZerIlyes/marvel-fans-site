@@ -22,6 +22,7 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
+    <?php include("navbar.php"); ?>
     <div class="container mt-5">
         <h1 class="mb-4">Sujets de discussion</h1>
         <?php if ($result && $result->num_rows > 0): ?>
