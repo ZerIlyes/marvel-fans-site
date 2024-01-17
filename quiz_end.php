@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+require 'config.php';
+require 'leaderboard.php';
+
 // Vérifiez si le quiz est terminé
 if (!isset($_SESSION['score']) || !isset($_SESSION['quiz_id'])) {
     header('Location: quiz_list.php'); // Redirigez vers la liste des quiz si aucun quiz n'est en cours
@@ -33,6 +36,8 @@ unset($_SESSION['questions']);
 <body>
 <h1>Fin du Quiz</h1>
 <p>Votre score final est de <?php echo htmlspecialchars($final_score); ?> points.</p>
+<?php display_leaderboard($conn, $quiz_id); ?>
+
 <a href="quiz_list.php">Retour à la liste des quiz</a>
 </body>
 </html>

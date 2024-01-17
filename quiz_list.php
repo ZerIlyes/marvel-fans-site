@@ -1,5 +1,3 @@
-
-
 <?php
 // Connexion à la base de données
 require 'config.php'; // Assurez-vous que ce fichier contient les informations de connexion à votre base de données
@@ -19,7 +17,7 @@ $result = $conn->query($query);
     <link rel="stylesheet" href="public/style.css"> <!-- Assurez-vous que le chemin est correct -->
 </head>
 <body>
-
+<?php include("navbar.php"); ?>
 <div class="header">
     <h1 class="title">Liste des Quiz</h1>
     <select class="sort-dropdown">
@@ -27,6 +25,7 @@ $result = $conn->query($query);
         <!-- Ajoutez d'autres options de tri si nécessaire -->
     </select>
 </div>
+
 
 <div class="quiz-container">
     <?php if ($result->num_rows > 0): ?>
