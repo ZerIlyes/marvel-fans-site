@@ -4,9 +4,15 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 ?>
+    <!-- Liens vers les fichiers CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Liens vers vos fichiers CSS personnalisés -->
+    <link rel="stylesheet" href="votre-style.css">
+    <!-- Optionnel : Liens vers les icônes Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="index.html">
-            <img src="../public/Logo.jpg" alt="Logo Marvel Fans" height="40">
+            <img src="public/Logo.jpg" alt="Logo Marvel Fans" height="50" width="100">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,6 +39,8 @@ if (session_status() === PHP_SESSION_NONE) {
             </ul>
         </div>
     </nav>
+
+
     <!-- Modal d'inscription -->
     <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -124,4 +132,10 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </div>
+
+    <!-- Liens vers les scripts JavaScript de Bootstrap (jQuery et Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Lien vers le fichier JavaScript de Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <?php
