@@ -19,6 +19,7 @@ $quiz = $result->fetch_assoc();
     <meta charset="UTF-8">
     <title>Prévisualisation du Quiz</title>
     <link rel="stylesheet" href="public/quiz_preview.css">
+    <?php include("navbar.php"); ?> <!-- Incluez votre bar de navigation ici -->
 </head>
 <body>
 <?php if ($quiz): ?>

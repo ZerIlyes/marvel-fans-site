@@ -3,25 +3,45 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Ajoutez des messages d'erreur pour le débogage
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    error_log('L\'utilisateur n\'est pas connecté ou la variable de session "loggedin" n\'est pas définie.');
+}
 ?>
     <!-- Liens vers les fichiers CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Liens vers vos fichiers CSS personnalisés -->
-    <link rel="stylesheet" href="votre-style.css">
+    <link rel="stylesheet" href="public/style.css">
     <!-- Optionnel : Liens vers les icônes Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">
-            <img src="public/Logo.jpg" alt="Logo Marvel Fans" height="50" width="100">
-        </a>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.php"> <img src = "public/Logo.jpg" width="100" height="50"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quiz_list.php">Quiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="topics.php">Topics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="write_review.php">Review</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jarvis.php">Jarvis</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto"> <!-- Cette classe va pousser votre menu utilisateur à droite -->
                 <?php
                 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                    // Afficher le nom d'utilisateur et le bouton de déconnexion
                     echo '<li class="nav-item dropdown">';
                     echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
                     echo htmlspecialchars($_SESSION["username"]);
@@ -31,9 +51,8 @@ if (session_status() === PHP_SESSION_NONE) {
                     echo '</div>';
                     echo '</li>';
                 } else {
-                    // Afficher les boutons de modal pour l'inscription et la connexion
-                    echo '<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">S\'inscrire</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Se connecter</a></li>';
+                    echo '<li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sinscrire</a></li>';
                 }
                 ?>
             </ul>
@@ -102,8 +121,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-
-
     <!-- Modal de connexion -->
     <!-- Modal de connexion -->
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -132,9 +149,8 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
         </div>
     </div>
-
     <!-- Liens vers les scripts JavaScript de Bootstrap (jQuery et Popper.js) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <!-- Lien vers le fichier JavaScript de Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
