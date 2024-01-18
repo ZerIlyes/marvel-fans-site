@@ -42,21 +42,9 @@ $result = $stmt->get_result();
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<?php include("navbar.php"); ?>
-<div class="container mt-5">
-    <div class="search-container mb-3">
-        <form action="topics.php" method="get">
-            <input type="text" name="search" placeholder="Rechercher dans le forum" value="<?php echo htmlspecialchars($searchQuery); ?>">
-            <button type="submit">Recherche</button>
-        </form>
-    </div>
-
-    <div class="forum-header d-flex justify-content-between align-items-center">
-        <h1>Sujets de discussion</h1>
-        <a href="create_topic.php" class="btn btn-primary">Nouveau sujet</a>
-    </div>
-
-    <div class="topics-list">
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Sujets de discussion</h1>
         <?php if ($result && $result->num_rows > 0): ?>
             <div class="topic-header">
                 <div class="topic-section">Sujet</div>
@@ -103,6 +91,7 @@ $result = $stmt->get_result();
     <!-- Lien vers le fichier JavaScript de Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </div>
+
 </body>
 </html>
 
