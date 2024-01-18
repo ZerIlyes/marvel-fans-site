@@ -49,105 +49,17 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="fr">
+
+
 <head>
+    <?php require_once 'navbar.php';?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="public/style.css">
 
-    <style>
-        body {
-            background-color: #f0f0f0;
-        }
-
-        .navbar {
-            background-color: #fff;
-        }
-
-        .navbar-brand img {
-            margin-top: 5px;
-        }
-
-        .user-info {
-            margin-right: 20px;
-        }
-
-        .review-form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-
-        .review-form h2 {
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-        .form-control {
-            border-radius: 5px;
-        }
-
-        .reviews-display {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .review {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;    
-    overflow: hidden; /* Ajouté pour éviter le débordement du texte */
-    word-wrap: break-word; /* Assurez-vous que les mots longs ne débordent pas */
-    
-}
-
-
-
-        .review h3 {
-            margin-top: 0;
-        }
-
-        .review p {
-            margin-bottom: 0;
-        }
-    </style>
     <title>Accueil - Site Fans Marvel</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="index.html">
-        <img src="../public/Logo.jpg" alt="Logo Marvel Fans" height="40">
-    </a>
-    <div class="collapse navbar-collapse justify-content-end user-info">
-        <ul class="navbar-nav ml-auto">
-            <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo htmlspecialchars($_SESSION["username"]); ?>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="logout.php">Déconnexion</a>
-                    </div>
-                </li>
-            <?php else: ?>
-                <li class="nav-item"><a class="nav-link" href="register.php">S'inscrire</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.php">Se connecter</a></li>
-            <?php endif; ?>
-        </ul>
-    </div>
-</nav>
 <div class="container">
     <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
         <div class="row justify-content-center">
@@ -199,9 +111,6 @@ $result = $conn->query($sql);
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.7.12/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
 
