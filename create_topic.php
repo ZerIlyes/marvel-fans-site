@@ -41,29 +41,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer un sujet - Forum Marvel</title>
-    <!-- Liens vers les fichiers CSS de Bootstrap -->
+    <title>Créer un sujet - Forum Comics</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Liens vers vos fichiers CSS personnalisés -->
-    <link rel="stylesheet" href="votre-style.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="create_topic.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>Créer un nouveau sujet</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label for="title">Titre du sujet :</label>
-                <input type="text" name="title" id="title" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Créer</button>
-        </form>
-    </div>
 
-    <!-- Liens vers les scripts JavaScript de Bootstrap (jQuery et Popper.js) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <!-- Lien vers le fichier JavaScript de Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Barre de navigation -->
+<?php include("navbar.php"); ?>
+
+<div class="container my-5">
+    <div class="card">
+        <div class="card-header">
+            <h1 class="card-title">Créer un nouveau sujet</h1>
+        </div>
+        <div class="card-body">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group">
+                    <label for="title">Titre du sujet :</label>
+                    <input type="text" name="title" id="title" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Créer</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
 

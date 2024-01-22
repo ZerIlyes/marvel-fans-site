@@ -1,6 +1,5 @@
 body {
     background-color: #f4f4f4;
-    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -12,50 +11,81 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-h1 {
-    font-family: 'Bangers', cursive;
-    color: #E62429;
+.forum-title {
+    font-size: 24px; /* La taille du titre */
+    color: #333; /* La couleur du texte du titre */
+    text-align: center;
+    margin-top: 1rem; /* L'espace au-dessus du titre */
+    margin-bottom: 1rem; /* L'espace en dessous du titre */
+    font-weight: bold;
+}
+
+.search-bar-container {
+    margin-bottom: 1rem; /* L'espace en dessous de la barre de recherche */
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+}
+
+.btn-primary {
+    padding: 10px 20px;
+    background-color: #E62429; /* La couleur de votre bouton */
+    color: white;
+    border: none;
+    cursor: pointer;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 .search-container {
-    margin-bottom: 1rem;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
 }
 
-.search-container input[type="text"] {
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    border: 2px solid #ccc;
-}
-
-.search-container button {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #E62429;
-    color: white;
+.search-filter {
+    padding: 10px;
     border: none;
-    border-radius: 8px;
+    background-color: #f4f4f4;
+    color: #333;
     cursor: pointer;
 }
 
-.search-container button:hover {
+.search-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.search-btn {
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.search-btn i {
+    font-size: 1.2rem;
+}
+
+.btn-primary:hover, .search-btn:hover {
     background-color: #C10000;
 }
 
-.topic-item {
-    background-color: #ffffff;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-left: 4px solid #E62429;
-    transition: all 0.3s ease;
+
+/* Hover effects */
+.btn-primary:hover, .search-btn:hover {
+    background-color: #C10000; /* Darker shade for hover effect */
 }
 
-
-
+/* Topic list styles */
 .topic-header {
     display: flex;
     justify-content: space-between;
@@ -70,6 +100,16 @@ h1 {
     flex: 1;
     text-align: center;
 }
+
+.topic-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #E62429;
+    transition: all 0.3s ease;
+}
+
 .topic-item:hover {
     background-color: #f9f9f9;
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -89,31 +129,8 @@ h1 {
     margin-right: 10px;
 }
 
-.topic-info {
-    text-align: right;
-}
-
-.topic-author {
+.topic-author, .topic-count, .topic-last {
     font-style: italic;
-}
-
-.topic-count {
-    font-weight: bold;
-}
-
-.topic-last {
-    font-weight: bold;
-    color: #888;
-}
-
-.btn-primary {
-    background-color: #E62429;
-    border-color: #E62429;
-    font-weight: bold;
-}
-
-.btn-primary:hover {
-    background-color: #C10000;
 }
 
 @media (max-width: 768px) {
@@ -128,37 +145,4 @@ h1 {
     }
 }
 
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0.7);
-    }
-    70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-    }
-}
-.btn-primary {
-    background-color: #E62429; /* Marvel red */
-    border-color: #E62429;
-    font-weight: bold;
-    animation: pulse 2s infinite;
-
-}
-
-.topic-header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #888888;
-    color: white;
-    padding: 10px; /* Vous pouvez ajuster le padding selon vos préférences */
-    margin-bottom: 20px; /* Ajoutez une marge en bas pour créer de l'espace */
-    border-radius: 8px;
-    font-weight: bold;
-}
 
