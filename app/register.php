@@ -1,9 +1,9 @@
 <?php
 // register.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $servername = "db";
+    $username = "marvel";
+    $password = "password";
     $database = "marvel_fans";
 
     // Créer une connexion
@@ -27,9 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Exécuter la requête
     if ($stmt->execute()) {
         echo "Nouvel utilisateur enregistré avec succès.";
+        exit();
         // Rediriger l'utilisateur vers la page de connexion ou de profil après l'inscription
         header("Location: login.php");
-        exit();
+
     } else {
         echo "Erreur : " . $stmt->error;
     }
@@ -38,5 +39,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
     $conn->close();
 }
-?>
-

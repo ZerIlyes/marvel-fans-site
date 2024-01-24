@@ -77,6 +77,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 echo '</a>';
                 echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">';
                 echo '<a class="dropdown-item" href="logout.php">Déconnexion</a>';
+                echo '<a class="dropdown-item" href="myprofil.php">Mon profile</a>';
                 echo '</div>';
                 echo '</li>';
             } else {

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->fetch()) {
                     if (password_verify($password, $hashed_password)) {
                         // Le mot de passe est correct, donc démarrer une nouvelle session
-                        session_start();
+                        //session_start();
                         
                         // Stocker les données dans les variables de session
                         $_SESSION["loggedin"] = true;

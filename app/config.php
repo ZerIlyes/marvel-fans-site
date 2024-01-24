@@ -1,8 +1,8 @@
 <?php
 // config.php
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_SERVER', 'db');
+define('DB_USERNAME', 'marvel');
+define('DB_PASSWORD', 'password');
 define('DB_NAME', 'marvel_fans');
 
 // Connexion à la base de données MySQL
