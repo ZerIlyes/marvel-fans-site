@@ -17,7 +17,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <!-- Liens vers les fichiers CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Liens vers vos fichiers CSS personnalisés -->
-    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="navbar1.css">
     <!-- Optionnel : Liens vers les icônes Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>

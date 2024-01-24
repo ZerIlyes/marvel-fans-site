@@ -1,0 +1,108 @@
+/* Main styles with the color palette */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Audiowide', sans-serif;
+}
+
+.bg-image {
+    background-image: url('public/bd.png'); /* Ensure this is the correct path to your image */
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.chat-interface {
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for chat interface */
+    backdrop-filter: blur(10px);
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#chat-container {
+    height: 300px;
+    overflow-y: auto;
+    background-color: #F5F5DC; /* Off-white beige background for chat container */
+    border: 1px solid #926F5B; /* Medium brown border */
+    border-radius: 4px;
+    padding: 10px;
+}
+
+#user-input {
+    width: calc(100% - 20px); /* Subtract padding */
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #926F5B; /* Medium brown border */
+    background-color: #F5F5DC; /* Off-white beige background */
+}
+
+#send-button {
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #8A3324; /* Burnt umber for button */
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#send-button:hover {
+    background-color: #5C4033; /* Deep brown for button hover */
+}
+
+/* Chat message styles */
+.chat-message {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.chat-message .avatar {
+    width: 40px; /* Small avatar size */
+    height: 40px; /* Small avatar size */
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.chat-message p {
+    margin: 0;
+    padding: 8px 12px;
+    background: #F5F5DC; /* Off-white beige background for messages */
+    border-radius: 10px;
+    border: 1px solid #926F5B; /* Medium brown border */
+    max-width: 70%;
+}
+
+/* Differentiating between user and Jarvis messages */
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.user-message .avatar {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+.jarvis-message .avatar {
+    margin-right: 10px;
+}
+
+
+

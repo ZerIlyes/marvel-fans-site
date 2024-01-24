@@ -3,7 +3,7 @@
     margin: 0; /* Aucune marge autour de la navbar */
     border-radius: 0; /* Pas de bordures arrondies */
     width: 100%; /* La navbar doit couvrir toute la largeur */
-    background: linear-gradient(to bottom, #007BFF, #0056b3); /* Dégradé bleu */
+    background: linear-gradient(to bottom, #594635, #88764c); /* Dégradé bleu */
     color: #fff; /* Couleur du texte en blanc */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Ombre légère */
     position: relative;
@@ -46,7 +46,7 @@ body {
 }
 
 .navbar-toggler-icon {
-    background-image: url("public/Logo.jpg"); /* Remplacer par le chemin d'accès à votre icône de menu */
+    background-image: url("public/Logo.png"); /* Remplacer par le chemin d'accès à votre icône de menu */
 }
 
 .nav-link {

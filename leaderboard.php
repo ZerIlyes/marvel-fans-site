@@ -31,17 +31,19 @@ function update_quiz_score($conn, $quiz_id, $user_id, $new_score) {
 }
 
 function display_leaderboard($conn, $quiz_id) {
-    $leaderboard_query = "SELECT users.username, results.score FROM results JOIN users ON results.user_id = users.user_id WHERE results.quiz_id = ? ORDER BY results.score DESC, results.quiz_date ASC LIMIT 10";
+    $leaderboard_query = "SELECT users.username, users.avatar_path, results.score FROM results JOIN users ON results.user_id = users.user_id WHERE results.quiz_id = ? ORDER BY results.score DESC, results.quiz_date ASC LIMIT 10";
     if ($leaderboard_stmt = $conn->prepare($leaderboard_query)) {
         $leaderboard_stmt->bind_param('i', $quiz_id);
         $leaderboard_stmt->execute();
         $leaderboard_result = $leaderboard_stmt->get_result();
+
         // Affichage du leaderboard
         echo "<div class='leaderboard'>";
-        echo "<h2>Classement des joueurs</h2>";
+        echo "<h2>Leaderboard</h2>";
         echo "<ol>";
         while ($row = $leaderboard_result->fetch_assoc()) {
-            echo "<li>" . htmlspecialchars($row['username']) . " - " . $row['score'] . "</li>";
+            $avatarPath = $row['avatar_path'] ?: 'public/default_avatar.png'; // Si l'avatar n'existe pas, utilisez l'avatar par défaut
+            echo "<li><img src='" . htmlspecialchars($avatarPath) . "' alt='Avatar' class='avatar'>" . htmlspecialchars($row['username']) . " - " . $row['score'] . "</li>";
         }
         echo "</ol>";
         echo "</div>";
@@ -52,4 +54,5 @@ function display_leaderboard($conn, $quiz_id) {
         echo "Erreur lors de la préparation de la requête leaderboard.";
     }
 }
+
 ?>

@@ -1,0 +1,92 @@
+/* Style global pour l'arrière-plan et la police */
+body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url('public/background1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Bangers', cursive; /* Cette police a un style qui rappelle celui des titres Marvel/DC */
+}
+
+/* Importation de la police Google pour les titres */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+/* Container principal */
+.quiz-container {
+    background-color: rgba(245, 245, 220, 0.8); /* beige très léger avec un peu de transparence */
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner du relief */
+}
+
+/* Style spécifique pour la div quiz-header */
+.quiz-header {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Centrer le texte dans .quiz-header */
+}
+
+/* Bouton de démarrage du quiz */
+.start-quiz-btn {
+    background-color: #ffcc00; /* Couleur jaune qui correspond à la palette du site */
+    color: black; /* Texte en noir pour le contraste */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition pour l'interaction */
+    position: absolute; /* Positionnement absolu */
+    bottom: 20px; /* Positionné à 20px du bas du .quiz-header */
+    right: 20px; /* Positionné à 20px du côté droit */
+}
+
+.start-quiz-btn:hover {
+    background-color: #e6b800; /* Assombrir le bouton au survol */
+}
+
+/* Assurez-vous que le leaderboard ne chevauche pas l'image de fond */
+.leaderboard-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px; /* Espacement entre le quiz et le leaderboard */
+}
+
+.quiz-image img-fluid {
+    max-height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.leaderboard {
+    background-color: #a0522d;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quiz-container {
+        background-color: rgba(245, 245, 220, 0.95); /* Moins de transparence pour les petits écrans */
+    }
+
+    .start-quiz-btn {
+        position: static; /* Bouton positionné normalement pour les petits écrans */
+        display: block;
+        width: 100%;
+        margin-top: 20px; /* Espacement au-dessus du bouton */
+        transform: none; /* Annuler la transformation pour le centrage */
+    }
+}

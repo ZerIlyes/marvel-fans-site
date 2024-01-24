@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="footer.css">
 <footer class="bg-primary text-white">
-    <div class="container p-4">
+    <div class="container p-6" style= "background: linear-gradient(to bottom, #594635, #88764c);" >
         <div class="row">
             <!-- Colonne de gauche: Logo et description -->
             <div class="col-md-4 text-center">
-                <img src="./public/Logo.png" alt="Votre Logo" width="150" class="mb-4">
+                <img src="./public/Logo.png" alt="Votre Logo" width="100" class="mb-4">
                 <p>ComicsFan.com est la destination ultime pour les passionnés de bandes dessinées...</p>
             </div>
 
@@ -21,7 +22,7 @@
             </div>
         </div>
 
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <div class="text-center p-3">
             © <?php echo date("Y"); ?> Tous droits réservés: <a class="text-white" href="https://votre-site-web.com/">ComicsFan.com</a>
         </div>
     </div>
