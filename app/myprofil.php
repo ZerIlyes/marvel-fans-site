@@ -37,23 +37,37 @@ try{
         $newPassword = $_POST["new_password"];
         $newAvatar = $_POST["new_avatar"];
 
-        // Préparer la requête SQL de mise à jour
-        $updateStmt = $pdo->prepare("UPDATE users SET username = :new_username, email = :new_email, password_hash = :new_password, avatar_path = :new_avatar WHERE user_id = :user_id");
-
-        // Liaison des paramètres
-        $updateStmt->bindParam(":new_username", $newUsername);
-        $updateStmt->bindParam(":new_email", $newEmail);
-        $updateStmt->bindParam(":new_password", $newPassword); // Notez que vous devrez probablement gérer le mot de passe de manière sécurisée
-        $updateStmt->bindParam(":new_avatar", $newAvatar);
-
-        // Assurez-vous de définir la bonne valeur pour :user_id
-        $updateStmt->bindParam(":user_id", $_SESSION["user_id"]);
-
-        // Exécution de la mise à jour
-        if ($updateStmt->execute()) {
-            echo "Mise à jour réussie !";
+        // Vérifier si l'adresse e-mail est vide
+        // Vérifier si le nom d'utilisateur est vide
+        if (empty($newUsername)) {
+            echo "Veuillez fournir un nom d'utilisateur.";
+        } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $newUsername)) {
+            echo "Nom d'utilisateur invalide. Utilisez uniquement des lettres, des chiffres et des underscores.";
+        } elseif (empty($newEmail)) {
+            echo "Veuillez fournir une adresse e-mail.";
+        } elseif (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) {
+            echo "Veuillez fournir une adresse e-mail valide.";
+        } elseif (empty($newPassword)) {
+            echo "Veuillez fournir un mot de passe.";
         } else {
-            echo "Erreur lors de la mise à jour : " . $updateStmt->errorInfo()[2];
+            // Préparer la requête SQL de mise à jour
+            $updateStmt = $pdo->prepare("UPDATE users SET username = :new_username, email = :new_email, password_hash = :new_password, avatar_path = :new_avatar WHERE user_id = :user_id");
+            $passhashed = password_hash($newPassword, PASSWORD_DEFAULT);
+            // Liaison des paramètres
+            $updateStmt->bindParam(":new_username", $newUsername);
+            $updateStmt->bindParam(":new_email", $newEmail);
+            $updateStmt->bindParam(":new_password", $passhashed); // Notez que vous devrez probablement gérer le mot de passe de manière sécurisée
+            $updateStmt->bindParam(":new_avatar", $newAvatar);
+
+            // Assurez-vous de définir la bonne valeur pour :user_id
+            $updateStmt->bindParam(":user_id", $_SESSION["user_id"]);
+
+            // Exécution de la mise à jour
+            if ($updateStmt->execute()) {
+                echo "Mise à jour réussie !";
+            } else {
+                echo "Erreur lors de la mise à jour : " . $updateStmt->errorInfo()[2];
+            }
         }
     }
 
@@ -69,12 +83,86 @@ try{
 <head>
     <!-- Mettez ici les balises meta, les liens vers les fichiers CSS, etc. -->
     <title>Mon Profil</title>
+    <style>
+        .profile-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: url('public/captain.png') no-repeat scroll right center transparent;
+            background-size: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .avatar-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .avatar-options label {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+    </style>
+
 </head>
 <body>
 
-<!-- Afficher les informations actuelles de l'utilisateur -->
-<h2>Mon Profil</h2>
-<p>Nom d'utilisateur actuel : <?php echo htmlspecialchars($_SESSION["username"]); ?></p>
+<div class="profile-container">
+    <!-- Afficher les informations actuelles de l'utilisateur -->
+    <h2>Nom d'utilisateur actuel : <?php echo htmlspecialchars($_SESSION["username"]); ?></h2>
+    <img src="<?php echo htmlspecialchars($currentAvatar); ?>" alt="Avatar de l'utilisateur">
+
+</div>
+
 
 <!-- Afficher le formulaire de mise à jour -->
 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
