@@ -32,12 +32,17 @@ unset($_SESSION['questions']);
 <head>
     <meta charset="UTF-8">
     <title>Fin du Quiz</title>
+    <link rel="stylesheet" href="quiz_end.css">
 </head>
 <body>
-<h1>Fin du Quiz</h1>
-<p>Votre score final est de <?php echo htmlspecialchars($final_score); ?> points.</p>
-<?php display_leaderboard($conn, $quiz_id); ?>
-
-<a href="quiz_list.php">Retour à la liste des quiz</a>
+<div class="quiz-end-background">
+    <div class="quiz-end-container">
+    <h1>Fin du Quiz</h1>
+    <p class="final-score">Votre score final est de <?php echo htmlspecialchars($final_score); ?> points.</p>
+    <div class="leaderboard-container">
+        <?php display_leaderboard($conn, $quiz_id); ?>
+    </div>
+    <a href="quiz_list.php" class="back-to-list">Retour à la liste des quiz</a>
+</div>
 </body>
 </html>

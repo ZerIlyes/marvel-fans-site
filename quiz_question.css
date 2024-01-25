@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    background-image: url('public/questions.png');
+    background-position: center;
+    background-size: cover;
+    font-family: 'Bangers', cursive; /* Cette police a un style qui rappelle celui des titres Marvel/DC */
+}
+
+.quiz-card {
+    background-color: #beae92 !important; /* Light beige background */
+    border: 2px solid #b08c6c !important; /* Brown border */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-question {
+    color: #8b5a2b; /* Brown text */
+    margin-bottom: 30px;
+}
+
+.quiz-options {
+    padding: 0;
+}
+
+.quiz-option {
+    background-color: #c5aa95;
+    border: 2px solid #8b5a2b;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: #594635;
+    transform: scale(1.05);
+}
+
+.quiz-option.selected {
+    background-color: #594635;
+}
+
+.btn-submit {
+    background-color: #8A3324 !important; /* Same color as the option background */
+    color: white !important; /* White text */
+    padding: 14px 28px ; /* Padding for size */
+    border: 2px solid #b08c6c !important;
+    cursor: pointer ;
+    border-radius: 20px !important;
+    width: 75% ; /* Full width for consistency with options */
+    font-size: 1.1em ; /* Larger font size */
+    display: block ; /* Block level for full width */
+    margin: 20px auto ; /* Center button in the form */
+    transition: background-color 2.7s ease; ; /* Smooth transition for hover effect */
+}
+
+
+.btn-submit:hover {
+    background-color: #5d3b09; /* Darker brown */
+    transform: scale(1.05); !important;
+}
