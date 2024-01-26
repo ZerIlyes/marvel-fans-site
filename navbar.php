@@ -17,80 +17,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <!-- Liens vers les fichiers CSS de Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Liens vers vos fichiers CSS personnalisés -->
-    <link rel="stylesheet" href="navbar1.css">
+    <link rel="stylesheet" href="public/css/navbar1.css">
     <!-- Optionnel : Liens vers les icônes Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">
-        <img src="public/Logo.png" width="100" height="50" alt="Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="index.php">
-                    <img src="./public/accueil.png" alt="Accueil" class="nav-icon">
-                    Accueil
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="jarvis.php">
-                    <img src="./public/ai.png" alt="Jarvis" class="nav-icon">
-                    Jarvis
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="topics.php">
-                    <img src="./public/discuter.png" alt="Bavarder" class="nav-icon">
-                    Bavarder
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="quiz_list.php">
-                    <img src="./public/quiz.png" alt="Quiz" class="nav-icon">
-                    Quiz
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="write_review.php">
-                    <img src="./public/customer-review.png" alt="Review" class="nav-icon">
-                    Review
-                </a>
-            </li>
-            <!-- Ajoutez les autres éléments ici -->
-        </ul>
+<a href="index.php?action=login">Connexion</a>
+<a href="index.php?action=register">Inscription</a>
+<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
+    <a href="index.php?action=logout">Déconnexion</a>
+<?php endif; ?>
 
-
-        <ul class="navbar-nav ml-auto">
-            <?php
-            if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-                echo '<li class="nav-item dropdown">';
-                echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">';
-                echo htmlspecialchars($_SESSION["username"]);
-                echo '</a>';
-                echo '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">';
-                echo '<a class="dropdown-item" href="logout.php">Déconnexion</a>';
-                echo '</div>';
-                echo '</li>';
-            } else {
-                echo '<li class="nav-item">';
-                echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Se connecter</a>';
-                echo '</li>';
-                echo '<li class="nav-item">';
-                echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Sinscrire</a>';
-                echo '</li>';
-            }
-            ?>
-        </ul>
-    </div>
-</nav>
 
 <!-- Modal d'inscription -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -117,7 +55,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </select>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
-                        <img id="selectedAvatar" src="public/captain.png" alt="Selected Avatar" width="128" height="128">
+                        <img id="selectedAvatar" src="public/images/captain.png" alt="Selected Avatar" width="128" height="128">
                     </div>
                     <div class="form-group">
                         <label for="username">Nom d'utilisateur</label>
@@ -160,7 +98,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div class="modal-body d-flex">
                 <!-- Zone d'image ou d'illustration -->
                 <div class="login-illustration">
-                    <img src="./public/Image-connexion.png" alt="Connexion" style="max-width:100%;height:auto;">
+                    <img src="public/images/Image-connexion.png" alt="Connexion" style="max-width:100%;height:auto;">
                 </div>
 
                 <!-- Formulaire de connexion -->
