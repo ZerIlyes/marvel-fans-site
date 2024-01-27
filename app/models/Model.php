@@ -198,11 +198,11 @@ class UserModel {
         return false; // Échec de la connexion
     }
 
-    public function updateUserProfile($userId, $username, $email, $hashedPassword = null) {
+    public function updateUserProfile($userId, $username, $email, $avatarPath, $hashedPassword = null) {
         global $conn; // Utilisez la connexion globale
 
         // Préparez la requête SQL
-        $sql = "UPDATE users SET username = ?, email = ?";
+        $sql = "UPDATE users SET username = ?, email = ?, avatar_path = ?";
 
         // Ajoutez le mot de passe à la requête s'il est fourni
         if ($hashedPassword !== null) {
@@ -216,9 +216,9 @@ class UserModel {
 
         // Liaison des paramètres
         if ($hashedPassword !== null) {
-            $stmt->bind_param("sssi", $username, $email, $hashedPassword, $userId);
+            $stmt->bind_param("ssssi", $username, $email, $avatarPath, $hashedPassword, $userId);
         } else {
-            $stmt->bind_param("ssi", $username, $email, $userId);
+            $stmt->bind_param("sssi", $username, $email, $avatarPath, $userId);
         }
 
         if ($stmt->execute()) {
@@ -227,6 +227,7 @@ class UserModel {
             return false; // Échec de la mise à jour
         }
     }
+
 
 
 

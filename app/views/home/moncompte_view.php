@@ -26,8 +26,10 @@
         </div>
         <div class="col-md-8">
             <h2 class="mb-4">Modifier vos informations personnelles</h2>
-            <!-- Sélecteur d'avatar -->
-            <div class="form-group">
+            <!-- Début du formulaire -->
+            <form method="post" action="index.php?action=updateProfile" enctype="multipart/form-data">
+                <!-- Sélecteur d'avatar -->
+                <div class="form-group">
                 <label for="avatar">Choisissez votre avatar :</label>
                 <select name="avatar" id="avatar" class="form-control" required onchange="updateAvatarPreview(this.value)">
                     <option value="public/images/captain.png">Captain</option>
@@ -65,6 +67,7 @@
                 <p style="color: red;"><?php echo $passwordError; ?></p>
             <?php endif; ?>
             <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+            </form>
         </div>
     </div>
 </div>
@@ -73,10 +76,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
-    // Fonction pour mettre à jour l'aperçu de l'avatar
+    // Fonction pour mettre à jour l'aperçu de l'avatar et la valeur du champ caché
     function updateAvatarPreview(avatarPath) {
         var preview = document.getElementById('avatarPreview');
         preview.src = avatarPath;
+        document.getElementById('avatarPath').value = avatarPath;
     }
 </script>
 </body>
