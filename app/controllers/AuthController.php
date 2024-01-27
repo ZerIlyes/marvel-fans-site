@@ -9,55 +9,52 @@ class AuthController {
     }
 
     public function login() {
+        session_start();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $email = trim($_POST['email']);
-            $password = trim($_POST['password']);
+            $email = $_POST['email']; // Validez et nettoyez
+            $password = $_POST['password'];
+            $user = $this->userModel->loginUser($email, $password);
 
-            $user = $this->userModel->getUserByEmail($email);
-
-            if ($user && password_verify($password, $user['password_hash'])) {
-                // Le mot de passe est correct, démarrer une nouvelle session
-                session_start();
-                $_SESSION["loggedin"] = true;
-                $_SESSION["user_id"] = $user['user_id'];
-                $_SESSION["username"] = $user['username'];
-
-                // Rediriger vers la page d'accueil
-                header("location: index.php");
-                exit;
+            if ($user) {
+                // Connexion réussie
+                $_SESSION['loggedin'] = true;
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['username'] = $user['username'];
+                echo json_encode(['error' => false]);
             } else {
-                // Afficher une erreur de connexion
-                $login_err = "Identifiants invalides.";
-                require_once 'app/views/auth/loginModalView.php';
+                // Échec de la connexion
+                echo json_encode(['error' => true, 'message' => "L'adresse email ou le mot de passe est incorrect."]);
             }
-        } else {
-            require_once 'app/views/auth/loginModalView.php';
+            exit();
         }
     }
 
     public function register() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $username = trim($_POST['username']);
-            $email = trim($_POST['email']);
-            $password = $_POST['password'];
-            $avatar = $_POST['avatar'];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $username = $_POST['username']; // Valider et nettoyer ces données
+            $email = $_POST['email'];
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            // Hacher le mot de passe
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Appel à la fonction d'inscription du modèle
-            $result = $this->userModel->registerUser($username, $email, $hashed_password, $avatar);
-
-            if ($result) {
-                // Rediriger vers la page de connexion après l'inscription réussie
-                header("Location: index.php?action=login");
-                exit;
+            $userId = $this->userModel->registerUser($username, $email, $password);
+            if ($userId) {
+                // Inscription réussie, connectez l'utilisateur automatiquement
+                session_start();
+                $_SESSION['loggedin'] = true; // Ajout de cette ligne
+                $_SESSION['user_id'] = $userId;
+                $_SESSION['username'] = $username;
+                header('Location: index.php?action=menu');
+                exit();
             } else {
-                $register_err = "Erreur lors de l'inscription.";
-                require_once 'app/views/auth/registerModalView.php';
+                // Échec de l'inscription, gérer l'erreur
             }
-        } else {
-            require_once 'app/views/auth/registerModalView.php';
         }
     }
+
+    public function logout() {
+        session_start();
+        session_destroy(); // Cela effacera toutes les variables de session
+        header('Location: index.php'); // Redirige vers la page d'accueil
+        exit(); // Assurez-vous que le script s'arrête après la redirection
+    }
+
 }

@@ -9,12 +9,18 @@
                 </button>
             </div>
             <div class="modal-body d-flex">
+                <!-- Section d'erreur -->
                 <div class="login-illustration">
-                    <img src="public/images/Image-connexion.png" alt="Connexion" style="max-width:100%;height:auto;">
+                    <img src="public/images/Image-connexion.png" alt="Connexion" style="max-width:50%;height:auto;">
                 </div>
                 <div class="login-form">
-                    <form method="post" action="index.php?action=login">
+                    <form id="loginForm" method="post" action="index.php?action=login">
                         <div class="form-group">
+                            <?php if(isset($_SESSION['login_error'])): ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?php echo $_SESSION['login_error']; ?>
+                                </div>
+                                <?php unset($_SESSION['login_error']); endif; ?>
                             <label for="email">Email</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                         </div>
@@ -43,6 +49,7 @@
 </div>
 
 <!-- Bootstrap JavaScript -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="public/js/connexion.js"></script>

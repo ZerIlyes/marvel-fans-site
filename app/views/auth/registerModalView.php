@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/navbar1.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
@@ -26,11 +25,10 @@
                     <div class="form-group">
                         <label for="avatar">Choisissez votre avatar :</label>
                         <select name="avatar" id="avatar" class="form-control" required>
-                            <option value="public/captain.png">Captain</option>
-                            <option value="public/ironman.png">Iron Man</option>
-                            <option value="public/spiderman.png">Spider-Man</option>
-                            <option value="public/the-flash.png">The Flash</option>
-                            <option value="public/selim.png">The Selim du 95</option>
+                            <option value="public/images/captain.png">Captain</option>
+                            <option value="public/images/ironman.png">Iron Man</option>
+                            <option value="public/images/spiderman.png">Spider-Man</option>
+                            <option value="public/images/the-flash.png">The Flash</option>
                             <!-- Ajoutez les autres options d'avatar ici -->
                         </select>
                     </div>
@@ -56,18 +54,14 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Écouter l'événement de changement de sélection dans la liste déroulante d'avatar
-        document.getElementById("avatar").addEventListener("change", function () {
-            // Mettre à jour l'image affichée en fonction de la sélection de l'utilisateur
-            const selectedAvatar = this.value;
-            document.getElementById("selectedAvatar").src = selectedAvatar;
-        });
-    });
-</script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

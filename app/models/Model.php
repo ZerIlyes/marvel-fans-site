@@ -132,18 +132,20 @@ class UserModel {
         $this->db = (new Database())->connect();
     }
 
-    public function registerUser($username, $email, $password, $avatar) {
-        $stmt = $this->db->prepare("INSERT INTO users (username, email, password_hash, avatar_path) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $username, $email, $password, $avatar);
+    public function getUserInfo($userId) {
+        $stmt = $this->db->prepare("SELECT avatar_path, email FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
         } else {
-            $stmt->close();
-            return false;
+            // Chemin par défaut si l'utilisateur n'a pas d'avatar
+            return ['avatar_path' => 'public/images/default-avatar.png', 'email' => ''];
         }
     }
+
 
     public function getUserAvatarPath($userId) {
         $stmt = $this->db->prepare("SELECT avatar_path FROM users WHERE user_id = ?");
@@ -160,20 +162,74 @@ class UserModel {
     }
 
 
-    public function getUserByEmail($email) {
-        $stmt = $this->db->prepare("SELECT user_id, username, password_hash FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // Inscription d'un nouvel utilisateur
+    public function registerUser($username, $email, $passwordHash) {
+        global $conn; // Utilisez la connexion globale
 
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            return $row; // Retourne les données de l'utilisateur
+        // Préparation de la requête
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $passwordHash);
+
+        // Exécution et vérification
+        if ($stmt->execute()) {
+            return $conn->insert_id; // Retourne le dernier ID inséré
         } else {
-            return null; // L'utilisateur n'a pas été trouvé
+            return false;
         }
-        $stmt->close();
     }
+
+    // Vérification des informations de connexion de l'utilisateur
+    public function loginUser($email, $password) {
+        global $conn;
+
+        // Préparation de la requête
+        $stmt = $conn->prepare("SELECT user_id, username, password_hash FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows == 1) {
+                $user = $result->fetch_assoc();
+                if (password_verify($password, $user['password_hash'])) {
+                    return $user; // Connexion réussie
+                }
+            }
+        }
+        return false; // Échec de la connexion
+    }
+
+    public function updateUserProfile($userId, $username, $email, $hashedPassword = null) {
+        global $conn; // Utilisez la connexion globale
+
+        // Préparez la requête SQL
+        $sql = "UPDATE users SET username = ?, email = ?";
+
+        // Ajoutez le mot de passe à la requête s'il est fourni
+        if ($hashedPassword !== null) {
+            $sql .= ", password_hash = ?";
+        }
+
+        $sql .= " WHERE user_id = ?";
+
+        // Préparez la requête
+        $stmt = $conn->prepare($sql);
+
+        // Liaison des paramètres
+        if ($hashedPassword !== null) {
+            $stmt->bind_param("sssi", $username, $email, $hashedPassword, $userId);
+        } else {
+            $stmt->bind_param("ssi", $username, $email, $userId);
+        }
+
+        if ($stmt->execute()) {
+            return true; // Mise à jour réussie
+        } else {
+            return false; // Échec de la mise à jour
+        }
+    }
+
+
+
 }
 
 class ReviewModel {

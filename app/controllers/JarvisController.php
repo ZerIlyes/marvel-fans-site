@@ -27,7 +27,7 @@ class JarvisController {
 
         if ($userId) {
             $userAvatarPath = $this->userModel->getUserAvatarPath($userId);
-            require_once 'app/views/jarvis/JarvisView.php';
+            require_once 'app/views/jarvis/jarvis_view.php';
         } else {
             // Gérer le cas où l'utilisateur n'est pas connecté
             // Par exemple, rediriger vers la page de connexion
