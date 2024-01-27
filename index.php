@@ -7,7 +7,10 @@ require_once 'app/controllers/AuthController.php';
 require_once 'app/controllers/UserController.php';
 require_once 'app/controllers/JarvisController.php';
 require_once 'app/controllers/QuizController.php';
+require_once 'app/controllers/ReviewController.php';
 
+
+$reviewController = new ReviewController();
 $authController = new AuthController();
 $userController = new UserController();
 $jarvisController = new JarvisController();
@@ -49,6 +52,13 @@ if ($action) {
             break;
         case 'quiz_list':
             $quizController->listQuizzes();
+            break;
+        case 'write_review':
+            $reviewController = new ReviewController();
+            $reviewController->writeAndListReviews();
+            break;
+        case 'jarvis':
+            $jarvisController->showJarvisPage();
             break;
         // Autres cas d'action...
         default:

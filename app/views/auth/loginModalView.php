@@ -8,45 +8,52 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body d-flex">
-                <!-- Section d'erreur -->
-                <div class="login-illustration">
-                    <img src="public/images/Image-connexion.png" alt="Connexion" style="max-width:50%;height:auto;">
-                </div>
-                <div class="login-form">
-                    <form id="loginForm" method="post" action="index.php?action=login" >
-                        <div class="form-group">
-                            <?php if(isset($_SESSION['login_error'])): ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?php echo $_SESSION['login_error']; ?>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Section d'erreur -->
+                    <div class="col-md-6">
+                        <div class="login-illustration text-center">
+                            <img src="public/images/Image-connexion.png" alt="Connexion" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="login-form">
+                            <form id="loginForm" method="post" action="index.php?action=login">
+                                <div class="form-group">
+                                    <?php if(isset($_SESSION['login_error'])): ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?php echo $_SESSION['login_error']; ?>
+                                        </div>
+                                        <?php unset($_SESSION['login_error']); endif; ?>
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                                 </div>
-                                <?php unset($_SESSION['login_error']); endif; ?>
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                <div class="form-group">
+                                    <label for="password">Mot de passe</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="remember-me">
+                                    <label class="form-check-label" for="remember-me">Se souvenir de moi</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Se connecter</button>
+                            </form>
+                            <div class="login-help">
+                                <a href="#">Mot de passe oublié?</a>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="remember-me">
-                            <label class="form-check-label" for="remember-me">Se souvenir de moi</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Se connecter</button>
-                    </form>
-                    <div class="login-help">
-                        <a href="#">Mot de passe oublié?</a>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="login-register">
+                <div class="login-register mx-auto">
                     Vous n'avez pas de compte? <a href="index.php?action=show_register">Inscrivez-vous</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

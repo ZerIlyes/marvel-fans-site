@@ -240,15 +240,17 @@ class ReviewModel {
         $this->db = (new Database())->connect();
     }
 
-    public function insertReview($movieSeriesTitle, $reviewText, $rating, $userId) {
-        $stmt = $this->db->prepare("INSERT INTO reviews (movie_series_title, review, rating, user_id) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssii", $movieSeriesTitle, $reviewText, $rating, $userId);
-        return $stmt->execute();
+    public function getReviews() {
+        $sql = "SELECT reviews.*, users.username, users.avatar_path FROM reviews JOIN users ON reviews.user_id = users.user_id ORDER BY created_at DESC";
+        $result = $this->db->query($sql);
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     }
 
-    public function getReviews() {
-        $stmt = $this->db->prepare("SELECT reviews.*, users.username, users.avatar_path FROM reviews JOIN users ON reviews.user_id = users.user_id ORDER BY created_at DESC");
-        $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    public function saveReview($userId, $title, $review, $rating) {
+        $stmt = $this->db->prepare("INSERT INTO reviews (user_id, movie_series_title, review, rating) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("issi", $userId, $title, $review, $rating);
+        return $stmt->execute();
     }
 }
+
+

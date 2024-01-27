@@ -31,7 +31,7 @@
                             <option value="public/images/spiderman.png">Spiderman</option>
                             <option value="public/images/Venom.png">Venom</option>
                             <option value="public/images/Wolverine.png">Wolverine</option>
-                                                 <!-- Ajoutez les autres options d'avatar ici -->
+                            <!-- Ajoutez les autres options d'avatar ici -->
                         </select>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
