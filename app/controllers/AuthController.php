@@ -9,18 +9,16 @@ class AuthController {
     }
 
     public function login() {
-        session_start();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $email = $_POST['email']; // Validez et nettoyez
             $password = $_POST['password'];
             $user = $this->userModel->loginUser($email, $password);
 
             if ($user) {
-                // Connexion réussie
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
-                echo json_encode(['error' => false]);
+                echo json_encode(['error' => false, 'redirect' => 'index.php?action=menu']);
             } else {
                 // Échec de la connexion
                 echo json_encode(['error' => true, 'message' => "L'adresse email ou le mot de passe est incorrect."]);
@@ -28,6 +26,7 @@ class AuthController {
             exit();
         }
     }
+
 
     public function register() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -38,7 +37,6 @@ class AuthController {
             $userId = $this->userModel->registerUser($username, $email, $password);
             if ($userId) {
                 // Inscription réussie, connectez l'utilisateur automatiquement
-                session_start();
                 $_SESSION['loggedin'] = true; // Ajout de cette ligne
                 $_SESSION['user_id'] = $userId;
                 $_SESSION['username'] = $username;

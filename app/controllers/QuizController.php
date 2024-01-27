@@ -29,16 +29,14 @@ class QuizController
         if ($quiz_id <= 0) {
             die("ID de quiz invalide.");
         }
-        $_SESSION['quiz_id'] = $quiz_id;
-        $_SESSION['current_question_index'] = 0;
-        $_SESSION['score'] = 0;
-
         $questions = $this->model->getQuestionsByQuizId($quiz_id);
         if (empty($questions)) {
             die("Aucune question trouvée pour ce quiz.");
         }
+        $_SESSION['quiz_id'] = $quiz_id;
+        $_SESSION['current_question_index'] = 0;
+        $_SESSION['score'] = 0;
         $_SESSION['questions'] = $questions;
-
         header("Location: index.php?page=quiz_question");
         exit;
     }

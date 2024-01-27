@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-body">
                     <h2 class="quiz-question"><?php echo htmlspecialchars($currentQuestion['question_text']); ?></h2>
-                    <form action="index.php?page=handle_question_submission" method="post" class="quiz-options">
+                    <form action="index.php?page=handleQuestionSubmission" method="post" class="quiz-options">
                         <?php foreach ($options as $option): ?>
                             <div class="quiz-option" onclick="selectOption(this)">
                                 <?php echo htmlspecialchars($option['option_text']); ?>
@@ -51,7 +51,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
 
 
 

@@ -1,4 +1,4 @@
- $(document).ready(function() {
+$(document).ready(function() {
     $('#loginForm').on('submit', function(e) {
         e.preventDefault(); // Empêcher la soumission standard du formulaire
         var data = $(this).serialize(); // Sérialiser les données du formulaire
@@ -14,8 +14,8 @@
                     $('.alert').remove(); // Supprime les alertes précédentes
                     $('.modal-body').prepend('<div class="alert alert-danger">' + response.message + '</div>');
                 } else {
-                    // Si la connexion est réussie, vous pouvez rediriger ici avec JavaScript
-                    window.location.href = 'index.php?action=menu'; // Redirigez vers le carrousel
+                    // Si la connexion est réussie, rediriger vers l'URL fournie dans la réponse
+                    window.location.href = response.redirect; // Utilisez la propriété 'redirect' de la réponse JSON
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {

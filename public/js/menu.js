@@ -13,10 +13,10 @@
     // Charger les images de bandes dessinées
     var textureLoader = new THREE.TextureLoader();
     var textures = [
-    { texture: textureLoader.load('./public/images/Quizzz.png'), link: 'page1.html' },
+    { texture: textureLoader.load('./public/images/Quizzz.png'), link: 'index.php?action=quiz_list' },
     { texture: textureLoader.load('./public/images/Forums.png'), link: 'page2.html' },
     { texture: textureLoader.load('./public/images/Review.png'), link: 'page3.html' },
-    { texture: textureLoader.load('./public/images/Jarviss.png'), link: 'page4.html' },
+    { texture: textureLoader.load('./public/images/Jarviss.png'), link: 'index.php?action=jarvis' },
     // Ajoutez vos autres images ici avec les liens correspondants
     ];
 

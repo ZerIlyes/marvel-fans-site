@@ -15,8 +15,8 @@
 <div class="quiz-container">
     <?php if (!empty($quizzes)): ?>
         <?php foreach ($quizzes as $quiz): ?>
-            <a href="?page=quiz_preview&quiz_id=<?php echo $quiz['quiz_id']; ?>" class="quiz-card-link">
-                <div class="quiz-card">
+            <a href="index.php?page=quiz_preview&quiz_id=<?php echo $quiz['quiz_id']; ?>" class="quiz-card-link">
+            <div class="quiz-card">
                     <img src="<?php echo htmlspecialchars($quiz['image_path']); ?>" alt="Image du quiz">
                     <div class="content">
                         <h2 class="title"><?php echo htmlspecialchars($quiz['title']); ?></h2>

@@ -1,19 +1,6 @@
 <?php
 require_once 'app/models/Model.php';
 
-class UserController {
-    private $userModel;
-
-    public function __construct($userModel) {
-        $this->userModel = $userModel;
-    }
-
-    public function getUserAvatarPath($userId) {
-        return $this->userModel->getAvatarPath($userId);
-    }
-}
-
-
 class JarvisController {
     private $userModel;
 
@@ -21,16 +8,16 @@ class JarvisController {
         $this->userModel = new UserModel();
     }
 
-    public function chat() {
-        // Supposons que l'ID de l'utilisateur est stocké dans $_SESSION['user_id']
+    public function showJarvisPage() {
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
         if ($userId) {
             $userAvatarPath = $this->userModel->getUserAvatarPath($userId);
             require_once 'app/views/jarvis/jarvis_view.php';
         } else {
-            // Gérer le cas où l'utilisateur n'est pas connecté
-            // Par exemple, rediriger vers la page de connexion
+            // Redirigez vers la page de connexion ou affichez une erreur
+            header('Location: index.php?action=login');
+            exit();
         }
     }
 }

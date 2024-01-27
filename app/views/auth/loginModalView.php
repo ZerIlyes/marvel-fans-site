@@ -14,7 +14,7 @@
                     <img src="public/images/Image-connexion.png" alt="Connexion" style="max-width:50%;height:auto;">
                 </div>
                 <div class="login-form">
-                    <form id="loginForm" method="post" action="index.php?action=login">
+                    <form id="loginForm" method="post" action="index.php?action=login" >
                         <div class="form-group">
                             <?php if(isset($_SESSION['login_error'])): ?>
                                 <div class="alert alert-danger" role="alert">

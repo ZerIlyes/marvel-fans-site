@@ -17,6 +17,7 @@
                     <img src="<?php echo $quiz['image_path'] ? $quiz['image_path'] : "public/default_background.png"; ?>" alt="Image du quiz" class="img-fluid">
                     <!-- Modifiez le href pour utiliser un paramètre de requête GET -->
                     <a href="index.php?page=start_quiz&quiz_id=<?php echo $quiz_id; ?>" class="btn btn-primary start-quiz-btn mt-2">Commencer le Quiz</a>
+
                 </div>
             </div>
         </div>
