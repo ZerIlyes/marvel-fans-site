@@ -34,17 +34,19 @@ class UserController {
             $userId = $_SESSION['user_id'];
             $username = $_POST['username'];
             $email = $_POST['email'];
+            $avatarPath = $_POST['avatar']; // Récupérer le chemin de l'avatar choisi
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirm_password'];
 
             // Vérifiez si les champs obligatoires sont vides
-            if (empty($username) || empty($email)) {
+            if (empty($username) || empty($email) || empty($avatarPath)) {
                 $this->passwordError = "Veuillez remplir tous les champs.";
                 $this->showMonComptePage(); // Affichez à nouveau la page avec le message d'erreur
                 exit();
             }
 
             // Vérifiez si le champ de mot de passe est rempli
+            $hashedPassword = null;
             if (!empty($password)) {
                 // Vérifiez si les mots de passe correspondent
                 if ($password !== $confirmPassword) {
@@ -54,25 +56,29 @@ class UserController {
                 } else {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 }
-            } else {
-                $hashedPassword = null; // Le mot de passe ne doit pas être mis à jour
             }
 
             // Appelez la méthode de modèle pour mettre à jour les informations de l'utilisateur
-            $success = $this->userModel->updateUserProfile($userId, $username, $email, $hashedPassword);
+            $success = $this->userModel->updateUserProfile($userId, $username, $email, $avatarPath, $hashedPassword);
 
             if ($success) {
                 // Mettez à jour les informations de session si nécessaire
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $email;
+                $_SESSION['avatar_path'] = $avatarPath; // Mettre à jour le chemin de l'avatar dans la session
+
                 // Redirigez l'utilisateur vers la page de profil ou une autre page appropriée
-                header('Location: index.php?action=menu');
+                header('Location: index.php?action=moncompte');
                 exit();
             } else {
                 // Gérez l'erreur si la mise à jour échoue
+                $this->passwordError = "Une erreur s'est produite lors de la mise à jour du profil.";
+                $this->showMonComptePage();
+                exit();
             }
         }
     }
+
 
 }
 ?>
