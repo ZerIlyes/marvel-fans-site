@@ -26,11 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Exécuter la requête
     if ($stmt->execute()) {
-        echo "Nouvel utilisateur enregistré avec succès.";
-        exit();
+        // Fermer la déclaration et la connexion
+        $stmt->close();
+        $conn->close();
+
         // Rediriger l'utilisateur vers la page de connexion ou de profil après l'inscription
         header("Location: login.php");
-
+        exit(); // Assurez-vous que rien n'est exécuté après la redirection
     } else {
         echo "Erreur : " . $stmt->error;
     }
