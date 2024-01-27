@@ -25,15 +25,17 @@
                     <div class="form-group">
                         <label for="avatar">Choisissez votre avatar :</label>
                         <select name="avatar" id="avatar" class="form-control" required>
-                            <option value="public/images/captain.png">Captain</option>
-                            <option value="public/images/ironman.png">Iron Man</option>
-                            <option value="public/images/spiderman.png">Spider-Man</option>
-                            <option value="public/images/the-flash.png">The Flash</option>
-                            <!-- Ajoutez les autres options d'avatar ici -->
+                            <option value="public/images/Captainamerica.png">Captain</option>
+                            <option value="public/images/Deadpool.png">Deadpool</option>
+                            <option value="public/images/Ironman.png">Iron man</option>
+                            <option value="public/images/spiderman.png">Spiderman</option>
+                            <option value="public/images/Venom.png">Venom</option>
+                            <option value="public/images/Wolverine.png">Wolverine</option>
+                                                 <!-- Ajoutez les autres options d'avatar ici -->
                         </select>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
-                        <img id="selectedAvatar" src="public/images/captain.png" alt="Selected Avatar" width="128" height="128">
+                        <img id="selectedAvatar" src="public/images/Captainamerica.png" alt="Selected Avatar" width="128" height="128">
                     </div>
                     <div class="form-group">
                         <label for="username">Nom d'utilisateur</label>
@@ -53,6 +55,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Fonction pour mettre à jour l'image de l'avatar en fonction de la sélection de l'utilisateur
+    $('#avatar').change(function() {
+        var selectedAvatar = $(this).val();
+        $('#selectedAvatar').attr('src', selectedAvatar);
+    });
+</script>
+
 
 
 <!-- jQuery -->
