@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Liste des Quiz</title>
     <link rel="stylesheet" href="public/css/quizz_list.css">
+    <link rel="stylesheet" href="public/css/redirection.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +12,7 @@
 <div class="header">
     <h1 class="title">Liste des Quiz</h1>
 </div>
-
+<?php include 'public/redirection.php'; ?>
 <div class="quiz-container">
     <?php if (!empty($quizzes)): ?>
         <?php foreach ($quizzes as $quiz): ?>

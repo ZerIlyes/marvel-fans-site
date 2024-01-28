@@ -1,5 +1,5 @@
 <?php
-session_start(); // Placez session_start() ici
+session_start(); //
 // Inclure les fichiers nécessaires
 require_once 'app/models/Model.php';
 require_once 'app/controllers/AuthController.php';

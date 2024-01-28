@@ -1,0 +1,23 @@
+/* redirection.css */
+#redirectionButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #B08C6CFF; /* Bleu */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#redirectionButton a {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#redirectionButton:hover {
+    background-color: #0056b3; /* Un bleu plus foncé */
+}

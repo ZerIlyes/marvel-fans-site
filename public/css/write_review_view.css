@@ -7,7 +7,7 @@ body, html {
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
-    font-family: 'Bangers', cursive;
+
 }
 
 .review-item {
@@ -27,6 +27,7 @@ body, html {
     width: 80%;
     margin: auto;
     overflow: hidden;
+    font-family: 'Bangers', cursive;
 }
 
 .review-form {
@@ -43,6 +44,7 @@ body, html {
     color: #ffffff;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Bangers', cursive;
 }
 
 .review-title {

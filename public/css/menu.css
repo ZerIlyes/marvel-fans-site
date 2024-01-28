@@ -2,6 +2,7 @@
 .username-btn {
     background: url("../images/deconnexion.png") no-repeat center center / cover;
     backdrop-filter: blur(15px);
+    font-family: 'Bangers', cursive;
     color: white;
     text-shadow: 1px 1px 2px #000; /* Ajoute une ombre au texte pour le faire ressortir */
     padding: 0.375rem 0.75rem; /* Exemple de padding, ajustez selon vos besoins */

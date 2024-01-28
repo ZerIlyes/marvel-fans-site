@@ -1,9 +1,9 @@
 body {
     background-color: #f4f0e3; /* Couleur de fond marron clair */
-    font-family: 'Comic Sans MS', cursive; /* Police de style comics */
     background-image: url('../images/Fond_forum.png'); /* Ajoutez le chemin de votre image de fond */
     background-size: cover; /* Ajustez la taille de l'image pour couvrir tout le corps de la page */
     background-repeat: no-repeat; /* Empêchez la répétition de l'image de fond */
+    font-family: 'Bangers', cursive;
 }
 
 .container {

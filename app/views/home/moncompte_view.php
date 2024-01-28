@@ -5,9 +5,10 @@
     <title>Mon Compte</title>
     <!-- Incluez les fichiers CSS Bootstrap ici -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="public/js/arrow.js"></script>
+    <link rel="stylesheet" href="public/css/redirection.css">
 </head>
 <body>
+<?php include 'public/redirection.php'; ?>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-4">

@@ -6,9 +6,11 @@
     <title>Forum Marvel - Sujets</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/topics.css">
+    <link rel="stylesheet" href="public/css/redirection.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
+<?php include 'public/redirection.php'; ?>
 <div class="container mt-5 main-container">
     <h1 class="forum-title">Forum Comics</h1>
     <div class="d-flex justify-content-between align-items-center mb-3">

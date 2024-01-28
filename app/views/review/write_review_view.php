@@ -6,9 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/write_review_view.css">
+    <link rel="stylesheet" href="public/css/redirection.css">
 </head>
 <body>
-
+<?php include 'public/redirection.php'; ?>
 <div class="container">
     <div class="review-form">
         <div class="review-form-box">

@@ -8,9 +8,10 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="public/css/jarvis.css">
+    <link rel="stylesheet" href="public/css/redirection.css">
 </head>
 <body>
-
+<?php include 'public/redirection.php'; ?>
 <div class="bg-image"></div>
 <div class="container mt-5">
     <div class="row">
