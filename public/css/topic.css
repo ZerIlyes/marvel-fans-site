@@ -1,0 +1,55 @@
+body {
+    background-color: #f4f0e3; /* Couleur de fond marron clair */
+    font-family: 'Comic Sans MS', cursive; /* Police de style comics */
+    background-image: url('../images/Fond_forum.png'); /* Ajoutez le chemin de votre image de fond */
+    background-size: cover; /* Ajustez la taille de l'image pour couvrir tout le corps de la page */
+    background-repeat: no-repeat; /* Empêchez la répétition de l'image de fond */
+}
+
+.container {
+    background-color: #e2c4a4; /* Fond de la vignette en marron clair */
+    border-radius: 10px; /* Coins arrondis */
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.message {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    max-width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.username {
+    margin: 0;
+    font-weight: bold;
+}
+.message-time {
+    margin: 0;
+    color: #007bff;
+    margin-left: auto;
+}
+.new-message-form {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+
+}

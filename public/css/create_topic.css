@@ -1,5 +1,5 @@
 body {
-    background-color: #f4f4f4;
+    background-image: url('../images/Fond_forum.png');
 }
 
 .navbar {
@@ -16,8 +16,12 @@ body {
 }
 
 .container {
-    max-width: 800px;
-    margin: auto;
+    background-color: #f5e6da;
+    padding: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .card {
@@ -26,17 +30,17 @@ body {
 }
 
 .card-header {
-    background-color: #E62429;
+    background-color: saddlebrown;
     color: grey;
     font-size: 1.5rem;
     text-transform: uppercase;
 }
 
 .btn-primary {
-    background-color: #E62429;
+    background-color: brown;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #C10000;
+    background-color: brown;
 }

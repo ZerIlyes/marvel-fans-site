@@ -254,3 +254,68 @@ class ReviewModel {
 }
 
 
+class ForumModel
+{
+    private $db;
+
+    public function __construct() {
+        $this->db = (new Database())->connect();
+    }
+
+    public function getTopics($searchQuery = '')
+    {
+        $likeSearchQuery = '%' . $searchQuery . '%';
+        $sql = "SELECT t.topic_id, t.title, t.created_at AS topic_created_at, u.username, 
+           (SELECT COUNT(p.post_id) FROM posts p WHERE p.topic_id = t.topic_id) as post_count, 
+           (SELECT MAX(p.created_at) FROM posts p WHERE p.topic_id = t.topic_id) as last_post_date 
+    FROM topics t
+    JOIN users u ON t.user_id = u.user_id
+    WHERE t.title LIKE ?
+    GROUP BY t.topic_id
+    ORDER BY last_post_date DESC, topic_created_at DESC";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $likeSearchQuery);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+    public function savePost($topicId, $userId, $content) {
+        $stmt = $this->db->prepare("INSERT INTO posts (topic_id, user_id, content) VALUES (?, ?, ?)");
+        $stmt->bind_param("iis", $topicId, $userId, $content);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+    public function createTopic($title, $userId) {
+        $stmt = $this->db->prepare("INSERT INTO topics (title, user_id) VALUES (?, ?)");
+        $stmt->bind_param("si", $title, $userId);
+        $result = $stmt->execute();
+        $stmt->close();
+        return $result;
+    }
+}
+
+class TopicModel {
+    private $db;
+
+    public function __construct() {
+        $this->db = (new Database())->connect();
+    }
+
+    public function getPostsByTopicId($topicId) {
+        $stmt = $this->db->prepare("SELECT posts.*, users.username, users.avatar_path 
+                                FROM posts 
+                                JOIN users ON posts.user_id = users.user_id 
+                                WHERE topic_id = ? 
+                                ORDER BY created_at DESC");
+        $stmt->bind_param("i", $topicId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+}
+
+
+
+

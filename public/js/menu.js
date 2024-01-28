@@ -14,7 +14,7 @@
     var textureLoader = new THREE.TextureLoader();
     var textures = [
     { texture: textureLoader.load('./public/images/Quizzz.png'), link: 'index.php?action=quiz_list' },
-    { texture: textureLoader.load('./public/images/Forums.png'), link: 'page2.html' },
+    { texture: textureLoader.load('./public/images/Forums.png'), link: 'index.php?action=forum_topics' },
     { texture: textureLoader.load('./public/images/Review.png'), link: 'index.php?action=write_review' },
     { texture: textureLoader.load('./public/images/Jarviss.png'), link: 'index.php?action=jarvis' },
     // Ajoutez vos autres images ici avec les liens correspondant

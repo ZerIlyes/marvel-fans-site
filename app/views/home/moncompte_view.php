@@ -32,14 +32,16 @@
                 <div class="form-group">
                 <label for="avatar">Choisissez votre avatar :</label>
                 <select name="avatar" id="avatar" class="form-control" required onchange="updateAvatarPreview(this.value)">
-                    <option value="public/images/captain.png">Captain</option>
-                    <option value="public/images/ironman.png">Iron Man</option>
-                    <option value="public/images/spiderman.png">Spider-Man</option>
-                    <option value="public/images/the-flash.png">The Flash</option>
+                    <option value="public/images/Captainamerica.png">Captain</option>
+                    <option value="public/images/Deadpool.png">Deadpool</option>
+                    <option value="public/images/Ironman.png">Iron man</option>
+                    <option value="public/images/spiderman.png">Spiderman</option>
+                    <option value="public/images/Venom.png">Venom</option>
+                    <option value="public/images/Wolverine.png">Wolverine</option>
                     <!-- Ajoutez les autres options d'avatar ici -->
                 </select>
                 <!-- Aperçu de l'avatar sélectionné -->
-                <img id="avatarPreview" src="public/images/captain.png" alt="Selected Avatar Preview" class="img-fluid mb-3" />
+                <img id="avatarPreview" src="public/images/Captainamerica.png" alt="Selected Avatar Preview" width=150px height=150px class="img-fluid mb-3" />
             </div>
             <!-- Formulaire de modification d'informations personnelles -->
             <!-- Champ pour le nom d'utilisateur -->

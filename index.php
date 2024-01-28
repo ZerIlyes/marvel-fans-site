@@ -8,6 +8,8 @@ require_once 'app/controllers/UserController.php';
 require_once 'app/controllers/JarvisController.php';
 require_once 'app/controllers/QuizController.php';
 require_once 'app/controllers/ReviewController.php';
+require_once 'app/controllers/ForumController.php';
+require_once 'app/controllers/TopicController.php';
 
 
 $reviewController = new ReviewController();
@@ -15,7 +17,8 @@ $authController = new AuthController();
 $userController = new UserController();
 $jarvisController = new JarvisController();
 $quizController = new QuizController();
-
+$forumController = new ForumController();
+$topicController = new TopicController();
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $page = isset($_GET['page']) ? $_GET['page'] : '';
 
@@ -60,6 +63,25 @@ if ($action) {
         case 'jarvis':
             $jarvisController->showJarvisPage();
             break;
+
+        case 'forum_topics':
+            error_log("forum_topics action is reached");
+            $forumController->showTopics();
+            break;
+
+        case 'view_topic':
+            $topicId = $_GET['id'] ?? 0;
+            $topicController->showTopic($topicId);
+            break;
+        case 'submit_post':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $forumController->submitPost($_POST);
+            }
+            break;
+        case 'create_topic':
+            $forumController->createTopic();
+            break;
+
         // Autres cas d'action...
         default:
             include 'app/views/home/home.php';
@@ -85,6 +107,7 @@ if ($action) {
         case 'quiz_end':
             $quizController->endQuiz();
             break;
+
         // Gérer d'autres pages ou afficher une erreur 404
     }
 }

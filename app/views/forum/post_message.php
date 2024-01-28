@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION["loggedin"]) && $_SE
         $stmt->bind_param("iis", $topic_id, $user_id, $content);
         
         if ($stmt->execute()) {
-            header("location: topic.php?id=" . $topic_id);
+            header("location: topic_view.php?id=" . $topic_id);
             exit();
         } else {
             echo "Erreur lors de l'ajout du message : " . $stmt->error;
