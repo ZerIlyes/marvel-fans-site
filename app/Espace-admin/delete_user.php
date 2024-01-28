@@ -14,13 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $stmt->execute();
         $stmt->close();
 
-        // Réponse indiquant que la suppression a réussi
-        echo json_encode(array("success" => true));
+        // Réponse indiquant que la suppression a réussi avec un message de confirmation
+        echo json_encode(array("success" => true, "message" => "L'utilisateur a été supprimé avec succès."));
         exit();
     }
 }
 
 // Réponse en cas d'échec de la suppression
-echo json_encode(array("success" => false));
+echo json_encode(array("success" => false, "message" => "Échec de la suppression de l'utilisateur."));
 exit();
 ?>

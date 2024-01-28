@@ -108,11 +108,6 @@ $conn->close();
         </ul>
     <?php endif; ?>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script>
     $(document).ready(function(){
         // Gérez la suppression avec AJAX
@@ -127,8 +122,8 @@ $conn->close();
                 dataType: "json",
                 success: function(response){
                     if (response.success) {
-                        // Redirigez l'utilisateur après la suppression
-                        window.location.href = "user_topics.php?user_id=" + user_id; // Utilisez l'ID de l'utilisateur
+                        // Supprimez la ligne du sujet de la liste sans recharger la page
+                        $("#topicRow" + topic_id).remove();
                     }
                 },
                 error: function(error){
