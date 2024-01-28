@@ -15,7 +15,7 @@
             <ol>
                 <?php foreach ($leaderboardData as $row): ?>
                     <li>
-                        <img src="<?php echo htmlspecialchars($row['avatar_path'] ?: 'public/images/default_avatar.png'); ?>" alt="Avatar" class="avatar">
+                        <img src="<?php echo htmlspecialchars($row['avatar_path'] ?: 'public/images/default_avatar.png'); ?>" alt="Avatar" width=64px class="avatar">
                         <?php echo htmlspecialchars($row['username']) . " - " . $row['score']; ?>
                     </li>
                 <?php endforeach; ?>

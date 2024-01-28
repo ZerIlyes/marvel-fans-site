@@ -1,7 +1,6 @@
 <?php
 session_start(); // Placez session_start() ici
 // Inclure les fichiers nécessaires
-require_once 'app/models/config.php';
 require_once 'app/models/Model.php';
 require_once 'app/controllers/AuthController.php';
 require_once 'app/controllers/UserController.php';
@@ -117,6 +116,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
     $quizController->handleQuestionSubmission();
 }
 if (!$action && !$page) {
-    include 'app/views/home/home.php';
+    include 'app/views/home/menu_view.php';
 }
 ?>

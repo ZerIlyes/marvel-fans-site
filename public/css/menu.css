@@ -8,8 +8,6 @@
     border: none; /* Optionnel: supprimer la bordure si vous le souhaitez */
 }
 
-
-
 /* Style pour le dropdown qui le positionne en haut à droite et ajoute un peu de style */
 .dropdown {
     position: absolute;
@@ -30,4 +28,11 @@
 /* Style pour les éléments du menu déroulant au survol */
 .dropdown-menu .dropdown-item:hover {
     background-color: #e9ecef; /* Couleur de fond au survol */
+}
+
+.arrow-icon {
+    font-size: 24px; /* Taille de la police */
+    color: #007bff; /* Couleur de la flèche */
+    cursor: pointer; /* Curseur de la souris pour indiquer que c'est un lien cliquable */
+    /* Ajoutez d'autres styles selon vos préférences */
 }

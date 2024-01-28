@@ -1,6 +1,9 @@
  // Créer la scène
     var scene = new THREE.Scene();
-
+ var loader = new THREE.TextureLoader();
+ loader.load('public/images/dark4.jpg', function(texture) {
+     scene.background = texture;
+ });
     // Ajouter une caméra pour le carrousel
     var carouselCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
     carouselCamera.position.z = 300;
@@ -19,6 +22,7 @@
     { texture: textureLoader.load('./public/images/Jarviss.png'), link: 'index.php?action=jarvis' },
     // Ajoutez vos autres images ici avec les liens correspondant
     ];
+
 
     // Variables globales pour le rayon et les meshs
     var radius = 100; // Réduisez cette valeur pour rapprocher les images

@@ -5,6 +5,7 @@
     <title>Mon Compte</title>
     <!-- Incluez les fichiers CSS Bootstrap ici -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="public/js/arrow.js"></script>
 </head>
 <body>
 <div class="container mt-5">
@@ -16,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Informations Personnelles Actuelles</h5>
                     <!-- Afficher l'avatar actuel de l'utilisateur -->
-                    <img src="<?php echo htmlspecialchars($avatarPath); ?>" alt="Avatar actuel" class="img-fluid mb-3">
+                    <img src="<?php echo htmlspecialchars($avatarPath); ?>" alt="Avatar actuel" width=64 class="img-fluid mb-3">
                     <p><strong>Nom d'utilisateur :</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
                     <!-- Dans moncompte_view.php -->
                     <p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?></p>

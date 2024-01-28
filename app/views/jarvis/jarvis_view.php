@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="public/css/jarvis.css">
 </head>
 <body>
+
 <div class="bg-image"></div>
 <div class="container mt-5">
     <div class="row">

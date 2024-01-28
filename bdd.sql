@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 14 jan. 2024 à 18:06
+-- Généré le : dim. 28 jan. 2024 à 13:46
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -119,7 +119,23 @@ INSERT INTO `options` (`option_id`, `question_id`, `option_text`, `is_correct`) 
 (21, 6, 'Wong', 0),
 (22, 6, 'L’Ancien', 1),
 (23, 6, 'Baron Mordo', 0),
-(24, 6, 'Dormammu', 0);
+(24, 6, 'Dormammu', 0),
+(41, 11, 'Hulk', 1),
+(42, 11, 'Ant-Man', 0),
+(43, 11, 'Black Widow', 0),
+(44, 11, 'Hawkeye', 0),
+(45, 12, 'Loki', 1),
+(46, 12, 'Hela', 0),
+(47, 12, 'Malekith', 0),
+(48, 12, 'Laufey', 0),
+(49, 13, 'Iron Man 2', 0),
+(50, 13, 'Thor', 1),
+(51, 13, 'The Avengers', 0),
+(52, 13, 'Captain America: The First Avenger', 0),
+(53, 14, 'Frigga', 1),
+(54, 14, 'Sif', 0),
+(55, 14, 'Jane Foster', 0),
+(56, 14, 'Freya', 0);
 
 -- --------------------------------------------------------
 
@@ -168,7 +184,15 @@ INSERT INTO `questions` (`question_id`, `quiz_id`, `question_text`, `correct_ans
 (3, 1, 'Qui est le frère jumeau de Wanda Maximoff?', 'Pietro Maximoff'),
 (4, 2, 'Quel est le vrai nom de Doctor Strange?', 'Stephen Strange'),
 (5, 2, 'Quel objet Doctor Strange utilise-t-il pour manipuler le temps?', 'L’Œil d’Agamotto'),
-(6, 2, 'Qui est l’ancien mentor de Doctor Strange?', 'L’Ancien');
+(6, 2, 'Qui est l’ancien mentor de Doctor Strange?', 'L’Ancien'),
+(11, 3, 'Quelle est l\'identité secrète d\'Iron Man?', ''),
+(12, 3, 'Quel acteur joue Iron Man dans l\'Univers Cinématographique Marvel?', ''),
+(13, 3, 'Quel est le nom du meilleur ami d\'Iron Man, qui devient aussi War Machine?', ''),
+(14, 3, 'Quel est le nom de l\'entreprise fondée par la famille Stark?', ''),
+(15, 4, 'Quel autre Avenger partage une grande amitié avec Thor?', ''),
+(16, 4, 'Qui est le principal méchant dans le premier film de Thor?', ''),
+(17, 4, 'Dans quel film Thor apparaît-il pour la première fois dans l\'Univers Cinématographique Marvel?', ''),
+(18, 4, 'Comment s\'appelle la mère de Thor?', '');
 
 -- --------------------------------------------------------
 
@@ -190,8 +214,10 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`quiz_id`, `title`, `description`, `difficulty`, `image_path`, `created_at`) VALUES
-(1, 'Le Monde de Wanda Maximoff', 'Découvrez l’histoire et les pouvoirs de Wanda Maximoff, la Sorcière Rouge.', 'Moyen', NULL, '2024-01-13 14:17:33'),
-(2, 'Les Mystères de Doctor Strange', 'Plongez dans l’univers mystique de Doctor Strange et son parcours.', 'Difficile', NULL, '2024-01-13 14:17:33');
+(1, 'Le Monde de Wanda Maximoff', 'Découvrez l’histoire et les pouvoirs de Wanda Maximoff, la Sorcière Rouge.', 'Moyen', 'public/images/wanda.png', '2024-01-13 14:17:33'),
+(2, 'Les Mystères de Doctor Strange', 'Plongez dans l’univers mystique de Doctor Strange et son parcours.', 'Difficile', 'public/images/strange.png', '2024-01-13 14:17:33'),
+(3, 'L’Épopée d’Iron Man', 'Explorez les aventures et l’évolution technologique de Tony Stark, alias Iron Man.', 'Moyen', 'public/images/tony.png', '2024-01-28 12:35:47'),
+(4, 'Les Légendes de Thor', 'Voyagez à travers les mythes et les batailles de Thor, le Dieu du Tonnerre.', 'Difficile', 'public/images/thor.png', '2024-01-28 12:35:47');
 
 -- --------------------------------------------------------
 
@@ -284,7 +310,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `avatar_path`) VALUES
 (16, 'bibot', 'bibot@gmail.com', '$2y$10$7NGkZLzfrS8bCpzUGD0B7eUqByXFA7R.SdDPDmhRZd95gI.wSxw6S', '2024-01-07 17:23:20', 0, 'public/ironman.png'),
 (17, 'Rayane', 'salahabed3@gmail.com', '$2y$10$WUS4cluwFHoFF4Qco3XlpuKU/qEz.zjDTvciPQ16DKUUXr1G8o9tC', '2024-01-07 19:29:19', 0, 'public/spiderman.png'),
-(18, 'Flash_le_plus_rapide', 'cesmoilemeilleur@gmail.com', '$2y$10$H1pGfUcnrgBKagj9cLBD.eeJBDewr4AOaC84H2iIv4Qrfg5D8EDXK', '2024-01-07 19:35:30', 0, 'public/the-flash.png');
+(18, 'Flash_le_plus_rapide', 'cesmoilemeilleur@gmail.com', '$2y$10$H1pGfUcnrgBKagj9cLBD.eeJBDewr4AOaC84H2iIv4Qrfg5D8EDXK', '2024-01-07 19:35:30', 0, 'public/the-flash.png'),
+(19, 'Slimane95210', 'rayaneabed@gmail.com', '$2y$10$WCCcaSzKXl/GjsqP8O377eHi3QC4wRj3MlgRen9pWqYfkTGIG7OCm', '2024-01-28 12:43:50', 0, 'public/images/Captainamerica.png');
 
 --
 -- Index pour les tables déchargées
@@ -405,7 +432,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT pour la table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT pour la table `posts`
@@ -417,13 +444,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT pour la table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `results`
@@ -447,7 +474,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Contraintes pour les tables déchargées
