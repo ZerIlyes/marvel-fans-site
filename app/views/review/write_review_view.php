@@ -1,67 +1,447 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Écrire et Voir les Critiques</title>
-    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="public/css/write_review_view.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre Jeu 2D</title>
+
+    <img id="doorTopLeft" class="door" src="public/images/porte1.png">
+    <img src="public/images/jarviis.png" class="ecriture" id="ecritureTopLeft">
+
+    <img id="doorTopRight" class="door" src="public/images/porte1.png">
+    <img src="public/images/quizz.png" class="ecriture" id="ecritureTopRight">
+
+    <img id="doorBottomLeft" class="door" src="public/images/porte1.png">
+    <img src="public/images/revieww.png" class="ecriture" id="ecritureBottomLeft">
+
+    <img id="doorBottomRight" class="door" src="public/images/porte1.png">
+    <img src="public/images/forum.png" class="ecriture" id="ecritureBottomRight">
+
+    <div class="popup" id="popupTopLeft">
+        <div class="popup-content">
+            <h2>Bienvenue sur la page Jarvis</h2>
+            <p>Êtes-vous prêt à entrer dans la page Jarvis ?</p>
+            <button onclick="enterPage('jarvis')">Entrer</button>
+            <button onclick="closePopup('popupTopLeft')">Annuler</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popupTopRight">
+        <div class="popup-content">
+            <h2>Bienvenue sur la page Quizz</h2>
+            <p>Êtes-vous prêt à entrer dans la page Quizz ?</p>
+            <button onclick="enterPage('quizz')">Entrer</button>
+            <button onclick="closePopup('popupTopRight')">Annuler</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popupBottomLeft">
+        <div class="popup-content">
+            <h2>Bienvenue sur la page Review</h2>
+            <p>Êtes-vous prêt à entrer dans la page Review ?</p>
+            <button onclick="enterPage('review')">Entrer</button>
+            <button onclick="closePopup('popupBottomLeft')">Annuler</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popupBottomRight">
+        <div class="popup-content">
+            <h2>Bienvenue sur la page Forums</h2>
+            <p>Êtes-vous prêt à entrer dans la page Forums ?</p>
+            <button onclick="enterPage('forums')">Entrer</button>
+            <button onclick="closePopup('popupBottomRight')">Annuler</button>
+        </div>
+    </div>
+    <div class="popup" id="confirmationPopup">
+        <div  class="popup-content">
+            <h2>Confirmation</h2>
+            <p>Êtes-vous sûr de vouloir entrer dans la page <span id="pageName"></span> ?</p>
+            <button onclick="confirmPageEntry()">Oui</button>
+            <button onclick="closeConfirmationPopup()">Annuler</button>
+        </div>
+    </div>
+
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-image: url('public/images/Background_jeu.png'); /* Assurez-vous d'utiliser le bon chemin vers votre image d'herbe verte */
+            background-size: cover; /* Ajuste la taille de l'image pour couvrir toute la fenêtre */
+            background-repeat: no-repeat; /* Empêche la répétition de l'image de fond */
+        }
+        canvas {
+            border: 1px solid #000;
+            display: block;
+        }
+        #chat-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px; /* Coins arrondis */
+        }
+        #chat-messages {
+            max-height: 200px;
+            overflow-y: scroll;
+            padding: 5px;
+        }
+        #message-input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .door {
+            position: absolute;
+            width: 180px; /* Taille de la porte */
+            height: 160px; /* Taille de la porte */
+        }
+
+        #doorTopLeft {
+            top: 23px;
+            left: 100px;
+        }
+
+        #doorTopRight {
+            top: 23px;
+            right: 100px;
+        }
+
+        #doorBottomLeft {
+            bottom: 23px;
+            left:100px;
+        }
+
+        #doorBottomRight {
+            bottom: 23px;
+            right: 100px;
+        }
+
+        .ecriture {
+            position: absolute;
+            width: 100px; /* Ajustez la largeur selon vos besoins */
+            height: 50px; /* Ajustez la hauteur selon vos besoins */
+        }
+
+        #ecritureTopLeft {
+            top: 200px; /* Ajustez la position verticale */
+            left: 130px; /* Ajustez la position horizontale */
+        }
+
+        #ecritureTopRight {
+            top: 200px; /* Ajustez la position verticale */
+            right: 150px; /* Ajustez la position horizontale */
+        }
+
+        #ecritureBottomLeft {
+            bottom: 200px; /* Ajustez la position verticale */
+            left: 130px; /* Ajustez la position horizontale */
+        }
+
+        #ecritureBottomRight {
+            bottom: 200px; /* Ajustez la position verticale */
+            right: 150px; /* Ajustez la position horizontale */
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .popup-content {
+            text-align: center;
+        }
+
+        .popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
+<canvas id="myCanvas"></canvas>
 
-<div class="container">
-    <div class="review-form">
-        <div class="review-form-box">
-            <h2 class="review-title">Écrire une Critique</h2>
-            <form action="index.php?action=write_review" method="post">
-                <div class="form-group review-title-div"> <!-- Ajoutez la classe review-title-div ici -->
-                    <label for="movie_series_title">Titre du film ou de la série :</label>
-                    <input type="text" id="movie_series_title" name="movie_series_title" class="form-control" required>
-                </div>
-                <div class="form-group review-textarea-div"> <!-- Ajoutez la classe review-textarea-div ici -->
-                    <label for="review">Votre critique :</label>
-                    <textarea id="review" name="review" rows="4" cols="50" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Note :</label>
-                    <div class="rating-stars"> <!-- Ajoutez la classe rating-stars ici -->
-                        <i class="fa fa-star" data-value="1"></i>
-                        <i class="fa fa-star" data-value="2"></i>
-                        <i class="fa fa-star" data-value="3"></i>
-                        <i class="fa fa-star" data-value="4"></i>
-                        <i class="fa fa-star" data-value="5"></i>
-                    </div>
-                    <input type="hidden" id="inputRating" name="rating" required>
-                </div>
-
-                <button type="submit" class="submit-button">Soumettre</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Display of existing reviews -->
-    <div class="review-container">
-        <div class="review-box">
-            <?php if (!empty($reviews)): ?>
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review-item" >
-                        <img class="avatar-image" src="<?php echo htmlspecialchars($review['avatar_path']); ?>" alt="Avatar">
-                        <h3 class="review-title"><?php echo htmlspecialchars($review['movie_series_title']); ?></h3>
-                        <p class="review-info">Par <?php echo htmlspecialchars($review['username']); ?> le <?php echo $review['created_at']; ?></p>
-                        <p class="review-rating">Note :
-                            <?php for ($i = 0; $i < $review['rating']; $i++): ?>
-                                <i class="fa fa-star"> </i>
-                            <?php endfor; ?>
-                        </p>
-                        <p class="review-text"><?php echo nl2br(htmlspecialchars($review['review'])); ?></p>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>Aucune critique disponible.</p>
-            <?php endif; ?>
-        </div>
-    </div>
+<div id="chat-container">
+    <div id="chat-messages"></div>
+    <input type="text" id="message-input" placeholder="Tapez votre message ici...">
 </div>
-<script src="public/js/review.js"> </script>
+
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+
+    const canvasWidth = window.innerWidth;
+    const canvasHeight = window.innerHeight;
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    // Charger les images pour chaque direction
+    const bonhommeLeft = new Image();
+    bonhommeLeft.src = 'public/images/Left.png';
+
+    const bonhommeRight = new Image();
+    bonhommeRight.src = 'public/images/Right.png';
+
+    const bonhommeFront = new Image();
+    bonhommeFront.src = 'public/images/Front.png';
+
+    const bonhommeBack = new Image();
+    bonhommeBack.src = 'public/images/Back.png';
+
+    const bonhomme = {
+        x: canvasWidth / 2,
+        y: canvasHeight / 2,
+        image: bonhommeFront,
+        largeur: 100,
+        hauteur: 150,
+        vitesse: 5
+    };
+
+    const doors = {
+        topLeft: { x: 100, y: 100, element: document.getElementById('doorTopLeft'), open: false },
+        topRight: { x: canvasWidth - 100, y: 100, element: document.getElementById('doorTopRight'), open: false },
+        bottomLeft: { x: 100, y: canvasHeight - 100, element: document.getElementById('doorBottomLeft'), open: false },
+        bottomRight: { x: canvasWidth - 100, y: canvasHeight - 100, element: document.getElementById('doorBottomRight'), open: false }
+    };
+
+    function calculateDistance(bonhomme, door) {
+        const dx = bonhomme.x - door.x;
+        const dy = bonhomme.y - door.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function updateDoorImage(door, distance) {
+        if (distance < 250) {
+            door.element.src = 'public/images/porte4.png';
+            door.open = true;
+        } else if (distance < 300) {
+            door.element.src = 'public/images/porte3.png';
+            door.open = false;
+        } else if (distance < 320) {
+            door.element.src = 'public/images/porte2.png';
+            door.open = false;
+        } else {
+            door.element.src = 'public/images/porte1.png';
+            door.open = false;
+        }
+    }
+
+    function drawBonhomme() {
+        context.drawImage(bonhomme.image, bonhomme.x - bonhomme.largeur / 2, bonhomme.y - bonhomme.hauteur / 2, bonhomme.largeur, bonhomme.hauteur);
+    }
+
+    function update() {
+        let newX = bonhomme.x;
+        let newY = bonhomme.y;
+
+
+
+        if (keys['ArrowLeft']) {
+            bonhomme.image = bonhommeLeft;
+            newX -= bonhomme.vitesse;
+        }
+        if (keys['ArrowRight']) {
+            bonhomme.image = bonhommeRight;
+            newX += bonhomme.vitesse;
+        }
+        if (keys['ArrowUp']) {
+            bonhomme.image = bonhommeBack;
+            newY -= bonhomme.vitesse;
+        }
+        if (keys['ArrowDown']) {
+            bonhomme.image = bonhommeFront;
+            newY += bonhomme.vitesse;
+        }
+
+        newX = Math.max(0, Math.min(newX, canvasWidth - bonhomme.largeur));
+        newY = Math.max(0, Math.min(newY, canvasHeight - bonhomme.hauteur));
+
+        let canMove = true;
+        Object.values(doors).forEach(door => {
+            const distance = calculateDistance({ x: newX, y: newY }, door);
+            updateDoorImage(door, distance);
+
+            // Seuil de collision fixé à 200 pixels
+            if (distance < 200) {
+                canMove = false;
+            }
+
+
+        });
+
+        if (canMove) {
+            bonhomme.x = newX;
+            bonhomme.y = newY;
+        }
+
+        context.clearRect(0, 0, canvasWidth, canvasHeight);
+        drawBonhomme();
+
+        requestAnimationFrame(update);
+    }
+
+
+
+    const keys = {};
+
+    document.addEventListener('keydown', (event) => {
+        keys[event.key] = true;
+    });
+
+    document.addEventListener('keyup', (event) => {
+        keys[event.key] = false;
+    });
+    Object.values(doors).forEach(door => {
+        const distance = calculateDistance({ x: bonhomme.x, y: bonhomme.y }, door);
+        updateDoorImage(door, distance);
+
+        if (distance < 250 && !door.popupShown) {
+            // Afficher la pop-up correspondante en fonction de la porte
+            if (door === doors.topLeft) {
+                document.getElementById('popupTopLeft').style.display = 'block';
+            } else if (door === doors.topRight) {
+                document.getElementById('popupTopRight').style.display = 'block';
+            } else if (door === doors.bottomLeft) {
+                document.getElementById('popupBottomLeft').style.display = 'block';
+            } else if (door === doors.bottomRight) {
+                document.getElementById('popupBottomRight').style.display = 'block';
+            }
+            door.popupShown = true; // Pour éviter que la pop-up s'affiche en continu
+        } else if (distance >= 250 && door.popupShown) {
+            // Cacher la pop-up lorsque l'utilisateur s'éloigne
+            if (door === doors.topLeft) {
+                document.getElementById('popupTopLeft').style.display = 'none';
+            } else if (door === doors.topRight) {
+                document.getElementById('popupTopRight').style.display = 'none';
+            } else if (door === doors.bottomLeft) {
+                document.getElementById('popupBottomLeft').style.display = 'none';
+            } else if (door === doors.bottomRight) {
+                document.getElementById('popupBottomRight').style.display = 'none';
+            }
+            door.popupShown = false; // Réinitialiser pour la prochaine fois que le joueur s'approche
+        }
+    });
+
+
+
+    // Fonction pour confirmer l'entrée dans la page
+    function confirmPageEntry() {
+        const pageNameElement = document.getElementById('pageName');
+        const pageName = pageNameElement.textContent;
+        switch (pageName) {
+            case 'jarvis':
+                // Rediriger l'utilisateur vers la page Jarvis
+                window.location.href = 'app/views/jarvis/jarvis_view.php';
+                break;
+            case 'quizz':
+                // Rediriger l'utilisateur vers la page Quizz
+                window.location.href = 'app/views/quiz/quiz_list_view.php';
+                break;
+            case 'review':
+                // Rediriger l'utilisateur vers la page Review
+                window.location.href = 'app/views/review/write_review_view.php';
+                break;
+            case 'forums':
+                // Rediriger l'utilisateur vers la page Forums
+                window.location.href = 'app/views/forum/forum_view.php';
+                break;
+        }
+    }
+
+    // Fonction pour fermer le pop-up de confirmation
+    function closeConfirmationPopup() {
+        const confirmationPopup = document.getElementById('confirmationPopup');
+        confirmationPopup.style.display = 'none';
+    }
+
+    function openConfirmationPopup(pageName) {
+        const bonhommeX = bonhomme.x; // Obtenez la position x de votre personnage
+        const bonhommeY = bonhomme.y; // Obtenez la position y de votre personnage
+
+        // Calculez la distance entre le personnage et la porte correspondante (par exemple, porte Jarvis)
+        const distanceToDoor = calculateDistance(bonhommeX, bonhommeY, doors[pageName]);
+
+        // Si la distance est inférieure à 250 pixels, affichez le pop-up de confirmation
+        if (distanceToDoor < 250) {
+            const confirmationPopup = document.getElementById('confirmationPopup');
+            const pageNameElement = document.getElementById('pageName');
+            pageNameElement.textContent = pageName;
+            confirmationPopup.style.display = 'block';
+            openConfirmationPopup(pageName)
+            confirmPageEntry()
+        }
+    }
+
+    update();
+
+    function addMessage(message) {
+        const chatMessages = document.getElementById('chat-messages');
+        const messageElement = document.createElement('div');
+        messageElement.textContent = message;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    const messageInput = document.getElementById('message-input');
+
+    messageInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const message = messageInput.value;
+            if (message.trim() !== '') {
+                addMessage('Moi : ' + message);
+                messageInput.value = '';
+            }
+        }
+    });
+
+
+    function enterPage(page) {
+        switch (page) {
+            case 'jarvis':
+                // Rediriger l'utilisateur vers la page Jarvis
+                window.location.href = 'lien_vers_page_jarvis.html';
+                break;
+            case 'quizz':
+                // Rediriger l'utilisateur vers la page Quizz
+                window.location.href = 'lien_vers_page_quizz.html';
+                break;
+            case 'review':
+                // Rediriger l'utilisateur vers la page Review
+                window.location.href = 'lien_vers_page_review.html';
+                break;
+            case 'forums':
+                // Rediriger l'utilisateur vers la page Forums
+                window.location.href = 'lien_vers_page_forums.html';
+                break;
+        }
+    }
+
+    function closePopup(popupId) {
+        // Masquer la pop-up en modifiant le style CSS
+        document.getElementById(popupId).style.display = 'none';
+    }
+</script>
+
+
+
 </body>
 </html>
