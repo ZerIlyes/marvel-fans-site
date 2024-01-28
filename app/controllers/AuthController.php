@@ -18,6 +18,7 @@ class AuthController {
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['is_admin'] = $user['is_admin'];
                 echo json_encode(['error' => false, 'redirect' => 'index.php?action=menu']);
             } else {
                 // Échec de la connexion

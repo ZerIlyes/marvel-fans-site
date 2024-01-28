@@ -8,16 +8,16 @@ require_once 'app/controllers/JarvisController.php';
 require_once 'app/controllers/QuizController.php';
 require_once 'app/controllers/ReviewController.php';
 require_once 'app/controllers/ForumController.php';
-require_once 'app/controllers/TopicController.php';
-
-
+require_once 'app/controllers/UserTopicsController.php';
+require_once 'app/controllers/AdminController.php';
+$adminController = new AdminController();
 $reviewController = new ReviewController();
 $authController = new AuthController();
 $userController = new UserController();
 $jarvisController = new JarvisController();
 $quizController = new QuizController();
 $forumController = new ForumController();
-$topicController = new TopicController();
+$userTopicsController = new UserTopicsController();
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $page = isset($_GET['page']) ? $_GET['page'] : '';
 
@@ -70,7 +70,7 @@ if ($action) {
 
         case 'view_topic':
             $topicId = $_GET['id'] ?? 0;
-            $topicController->showTopic($topicId);
+            $userTopicsController->showTopic($topicId);
             break;
         case 'submit_post':
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -79,6 +79,59 @@ if ($action) {
             break;
         case 'create_topic':
             $forumController->createTopic();
+            break;
+        case 'delete_user':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
+                $userController->deleteUser($_POST['user_id']);
+            }
+            break;
+
+        case 'admin_panel':
+            // Vérifiez si l'utilisateur est administrateur avant d'afficher le panneau
+            if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
+                $userController->showUserList();
+            } else {
+                // Rediriger l'utilisateur ou afficher une erreur
+                header('Location: index.php');
+                exit();
+            }
+            break;
+
+            // Admin Vues
+
+
+        case 'add_user':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Assurez-vous que tous les champs nécessaires sont présents
+                if (isset($_POST['username'], $_POST['email'], $_POST['password'], $_POST['avatar'])) {
+                    $userController->addUser();
+                } else {
+                    echo json_encode(['success' => false, 'message' => 'Tous les champs sont requis.']);
+                }
+            }
+            break;
+
+        case 'create_user':
+            // Vérifiez si l'utilisateur est administrateur avant de créer un utilisateur
+            if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1 && $_SERVER['REQUEST_METHOD'] == 'POST') {
+                // Vous devez créer une méthode dans UserController pour traiter la création d'un nouvel utilisateur
+                $userController->createUser($_POST);
+            } else {
+                // Rediriger l'utilisateur ou afficher une erreur
+                header('Location: index.php');
+                exit();
+            }
+            break;
+        case 'view_user_topics':
+            $userId = $_GET['user_id'] ?? 0;
+            $userTopicsController->showUserTopics($userId);
+            break;
+        case 'delete_topic':
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['topic_id'])) {
+                $userTopicsController->deleteTopic($_POST['topic_id']);
+            } else {
+                // Gérer l'erreur ou ignorer la demande
+            }
             break;
 
         // Autres cas d'action...
@@ -115,7 +168,13 @@ if ($action) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
     $quizController->handleQuestionSubmission();
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'add_user') {
+    // Appeler la fonction du contrôleur pour traiter le formulaire d'ajout d'utilisateur
+    $userController->addUser($_POST);
+}
+
 if (!$action && !$page) {
-    include 'app/views/home/menu_view.php';
+    include 'app/views/home/home.php';
 }
 ?>

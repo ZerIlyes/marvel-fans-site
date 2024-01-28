@@ -147,6 +147,7 @@ class UserModel {
     }
 
 
+
     public function getUserAvatarPath($userId) {
         $stmt = $this->db->prepare("SELECT avatar_path FROM users WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
@@ -183,7 +184,7 @@ class UserModel {
         global $conn;
 
         // Préparation de la requête
-        $stmt = $conn->prepare("SELECT user_id, username, password_hash FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT user_id, username, password_hash, is_admin FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
 
         if ($stmt->execute()) {
@@ -225,6 +226,68 @@ class UserModel {
             return true; // Mise à jour réussie
         } else {
             return false; // Échec de la mise à jour
+        }
+    }
+
+    public function getUsers() {
+        $sql = "SELECT user_id, username, email, is_admin FROM users";
+        $result = $this->db->query($sql);
+        if ($result) {
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } else {
+            return []; // Retourner un tableau vide si aucun utilisateur n'est trouvé
+        }
+    }
+
+    public function deleteUser($userId) {
+        $this->db->begin_transaction();
+
+        try {
+            // Supprimez d'abord tous les topics associés à l'utilisateur
+            $stmt = $this->db->prepare("DELETE FROM topics WHERE user_id = ?");
+            $stmt->bind_param("i", $userId);
+            if (!$stmt->execute()) {
+                throw new Exception("Erreur lors de la suppression des topics: " . $stmt->error);
+            }
+            $stmt->close();
+
+            // Puis supprimez toutes les reviews associées à l'utilisateur
+            $stmt = $this->db->prepare("DELETE FROM reviews WHERE user_id = ?");
+            $stmt->bind_param("i", $userId);
+            if (!$stmt->execute()) {
+                throw new Exception("Erreur lors de la suppression des reviews: " . $stmt->error);
+            }
+            $stmt->close();
+
+            // Finalement, supprimez l'utilisateur
+            $stmt = $this->db->prepare("DELETE FROM users WHERE user_id = ?");
+            $stmt->bind_param("i", $userId);
+            if (!$stmt->execute()) {
+                throw new Exception("Erreur lors de la suppression de l'utilisateur: " . $stmt->error);
+            }
+            $stmt->close();
+
+            $this->db->commit();
+            echo json_encode(['success' => true]);
+        } catch (Exception $e) {
+            $this->db->rollback();
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+        exit();
+    }
+
+    public function addUser($username, $email, $password, $avatarPath) {
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare("INSERT INTO users (username, email, password_hash, avatar_path) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $username, $email, $passwordHash, $avatarPath);
+
+        if ($stmt->execute()) {
+            $stmt->close();
+            return ['success' => true];
+        } else {
+            $error = $this->db->error;
+            $stmt->close();
+            return ['success' => false, 'message' => $error];
         }
     }
 
@@ -294,6 +357,18 @@ class ForumModel
         $stmt->close();
         return $result;
     }
+    public function deleteTopic($topicId) {
+        $stmt = $this->db->prepare("DELETE FROM topics WHERE topic_id = ?");
+        $stmt->bind_param("i", $topicId);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+    }
+
 }
 
 class TopicModel {
@@ -315,6 +390,32 @@ class TopicModel {
         return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     }
 }
+
+class UserTopicsModel {
+    private $db;
+
+    public function __construct() {
+        $this->db = (new Database())->connect();
+    }
+
+    public function getUserTopics($userId) {
+        $sql = "SELECT topic_id, title, created_at FROM topics WHERE user_id = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+
+    public function getUsername($userId) {
+        $stmt = $this->db->prepare("SELECT username FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+}
+
 
 
 

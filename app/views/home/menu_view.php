@@ -16,6 +16,10 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
             <a class="dropdown-item" href="index.php?action=moncompte">Mon Compte</a>
+            <!-- Le bouton Administrateur ne sera visible que si l'utilisateur est un admin -->
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
+                <a class="dropdown-item" href="index.php?action=admin_panel">Administrateur</a>
+            <?php endif; ?>
         </div>
     <?php endif; ?>
 </div>

@@ -26,6 +26,41 @@ class UserController {
         }
     }
 
+    public function deleteUser($userId) {
+        if ($this->userModel->deleteUser($userId)) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Impossible de supprimer l\'utilisateur.']);
+        }
+        exit();
+    }
+    public function addUser() {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $avatar = $_POST['avatar'];
+
+        $result = $this->userModel->addUser($username, $email, $password, $avatar);
+
+        if ($result['success']) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => $result['message']]);
+        }
+        exit();
+    }
+
+
+
+
+
+
+
+
+    public function showUserList() {
+        $users = $this->userModel->getUsers(); // Assurez-vous que cette méthode existe et renvoie tous les utilisateurs
+        require 'app/views/admin/user_list_view.php';
+    }
 
 
     public function updateProfile() {
@@ -78,6 +113,7 @@ class UserController {
             }
         }
     }
+
 
 
 }
