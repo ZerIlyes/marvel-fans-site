@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Valider les données ici (vérifier si elles ne sont pas vides, etc.)
 
     // Préparer une déclaration de sélection
-    $sql = "SELECT user_id, username, password_hash FROM users WHERE email = ?";
+    $sql = "SELECT user_id, username, password_hash, is_admin FROM users WHERE email = ?";
 
     if ($stmt = $conn->prepare($sql)) {
         // Lier les variables à la déclaration préparée comme paramètres
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Vérifier si l'email existe, si oui, vérifier le mot de passe
             if ($stmt->num_rows == 1) {
                 // Lier les variables de résultat
-                $stmt->bind_result($user_id, $username, $hashed_password);
+                $stmt->bind_result($user_id, $username, $hashed_password,$is_admin);
                 if ($stmt->fetch()) {
                     if (password_verify($password, $hashed_password)) {
                         // Le mot de passe est correct, donc démarrer une nouvelle session
@@ -44,9 +44,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $_SESSION["user_id"] = $user_id;
                         $_SESSION["username"] = $username;
 
-                        // Rediriger l'utilisateur vers la page d'accueil
-                        header("location: index.php");
-                        exit(); // Assurez-vous que rien n'est exécuté après la redirection
+                        // Vérifier si l'utilisateur est administrateur
+                        if ($is_admin == 1) {
+                            // Rediriger l'administrateur vers la page d'administration
+                            header("location: Espace-admin/admin.php");
+                            exit();}
+                        else{
+                            // Rediriger l'utilisateur vers la page d'accueil
+                            header("location: index.php");
+                            exit(); // Assurez-vous que rien n'est exécuté après la redirection
+                        }
                     } else {
                         // Afficher une erreur si le mot de passe n'est pas valide
                         $login_err = "Le mot de passe que vous avez entré n'était pas valide.";

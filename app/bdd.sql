@@ -284,8 +284,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `avatar_path`) VALUES
 (16, 'bibot', 'bibot@gmail.com', '$2y$10$7NGkZLzfrS8bCpzUGD0B7eUqByXFA7R.SdDPDmhRZd95gI.wSxw6S', '2024-01-07 17:23:20', 0, 'public/ironman.png'),
 (17, 'Rayane', 'salahabed3@gmail.com', '$2y$10$WUS4cluwFHoFF4Qco3XlpuKU/qEz.zjDTvciPQ16DKUUXr1G8o9tC', '2024-01-07 19:29:19', 0, 'public/spiderman.png'),
-(18, 'Flash_le_plus_rapide', 'cesmoilemeilleur@gmail.com', '$2y$10$H1pGfUcnrgBKagj9cLBD.eeJBDewr4AOaC84H2iIv4Qrfg5D8EDXK', '2024-01-07 19:35:30', 0, 'public/the-flash.png');
-
+(18, 'Flash_le_plus_rapide', 'cesmoilemeilleur@gmail.com', '$2y$10$H1pGfUcnrgBKagj9cLBD.eeJBDewr4AOaC84H2iIv4Qrfg5D8EDXK', '2024-01-07 19:35:30', 0, 'public/the-flash.png'),
+(1,'admin','admin@marvel.com','$2y$10$umWAHpLn6kjW.RkxyZjAT.kpZpU0Sv.qJEYqA/gHmTvQSC2mnf47e','2024-01-27 17:51:06',1,'public/spiderman.png');
 --
 -- Index pour les tables déchargées
 --
