@@ -217,10 +217,10 @@
     };
 
     const doors = {
-        topLeft: { x: 100, y: 100, element: document.getElementById('doorTopLeft'), open: false },
-        topRight: { x: canvasWidth - 100, y: 100, element: document.getElementById('doorTopRight'), open: false },
-        bottomLeft: { x: 100, y: canvasHeight - 100, element: document.getElementById('doorBottomLeft'), open: false },
-        bottomRight: { x: canvasWidth - 100, y: canvasHeight - 100, element: document.getElementById('doorBottomRight'), open: false }
+        topLeft: { x: 100, y: 100, element: document.getElementById('doorTopLeft') },
+        topRight: { x: canvasWidth - 100, y: 100, element: document.getElementById('doorTopRight') },
+        bottomLeft: { x: 100, y: canvasHeight - 100, element: document.getElementById('doorBottomLeft') },
+        bottomRight: { x: canvasWidth - 100, y: canvasHeight - 100, element: document.getElementById('doorBottomRight') }
     };
 
     function calculateDistance(bonhomme, door) {
@@ -230,18 +230,15 @@
     }
 
     function updateDoorImage(door, distance) {
+        // Mise à jour des images de porte en fonction de la distance
         if (distance < 250) {
             door.element.src = 'public/images/porte4.png';
-            door.open = true;
         } else if (distance < 300) {
             door.element.src = 'public/images/porte3.png';
-            door.open = false;
         } else if (distance < 320) {
             door.element.src = 'public/images/porte2.png';
-            door.open = false;
         } else {
             door.element.src = 'public/images/porte1.png';
-            door.open = false;
         }
     }
 
@@ -252,8 +249,6 @@
     function update() {
         let newX = bonhomme.x;
         let newY = bonhomme.y;
-
-
 
         if (keys['ArrowLeft']) {
             bonhomme.image = bonhommeLeft;
@@ -280,12 +275,10 @@
             const distance = calculateDistance({ x: newX, y: newY }, door);
             updateDoorImage(door, distance);
 
-            // Seuil de collision fixé à 200 pixels
-            if (distance < 200) {
-                canMove = false;
+            if (distance < 250) {
+                redirectToPage(door); // Redirection si le personnage est proche de la porte
+                canMove = false; // Empêcher le mouvement du personnage
             }
-
-
         });
 
         if (canMove) {
@@ -299,7 +292,18 @@
         requestAnimationFrame(update);
     }
 
-
+    // Fonction de redirection
+    function redirectToPage(door) {
+        if (door === doors.topLeft) {
+            window.location.href = 'app/views/jarvis/jarvis_view.php';
+        } else if (door === doors.topRight) {
+            window.location.href = 'app/views/quiz/quiz_list_view.php';
+        } else if (door === doors.bottomLeft) {
+            window.location.href = 'app/views/review/write_review_view.php';
+        } else if (door === doors.bottomRight) {
+            window.location.href = 'app/views/forum/forum_view.php';
+        }
+    }
 
     const keys = {};
 
@@ -310,138 +314,9 @@
     document.addEventListener('keyup', (event) => {
         keys[event.key] = false;
     });
-    Object.values(doors).forEach(door => {
-        const distance = calculateDistance({ x: bonhomme.x, y: bonhomme.y }, door);
-        updateDoorImage(door, distance);
-
-        if (distance < 250 && !door.popupShown) {
-            // Afficher la pop-up correspondante en fonction de la porte
-            if (door === doors.topLeft) {
-                document.getElementById('popupTopLeft').style.display = 'block';
-            } else if (door === doors.topRight) {
-                document.getElementById('popupTopRight').style.display = 'block';
-            } else if (door === doors.bottomLeft) {
-                document.getElementById('popupBottomLeft').style.display = 'block';
-            } else if (door === doors.bottomRight) {
-                document.getElementById('popupBottomRight').style.display = 'block';
-            }
-            door.popupShown = true; // Pour éviter que la pop-up s'affiche en continu
-        } else if (distance >= 250 && door.popupShown) {
-            // Cacher la pop-up lorsque l'utilisateur s'éloigne
-            if (door === doors.topLeft) {
-                document.getElementById('popupTopLeft').style.display = 'none';
-            } else if (door === doors.topRight) {
-                document.getElementById('popupTopRight').style.display = 'none';
-            } else if (door === doors.bottomLeft) {
-                document.getElementById('popupBottomLeft').style.display = 'none';
-            } else if (door === doors.bottomRight) {
-                document.getElementById('popupBottomRight').style.display = 'none';
-            }
-            door.popupShown = false; // Réinitialiser pour la prochaine fois que le joueur s'approche
-        }
-    });
-
-
-
-    // Fonction pour confirmer l'entrée dans la page
-    function confirmPageEntry() {
-        const pageNameElement = document.getElementById('pageName');
-        const pageName = pageNameElement.textContent;
-        switch (pageName) {
-            case 'jarvis':
-                // Rediriger l'utilisateur vers la page Jarvis
-                window.location.href = 'app/views/jarvis/jarvis_view.php';
-                break;
-            case 'quizz':
-                // Rediriger l'utilisateur vers la page Quizz
-                window.location.href = 'app/views/quiz/quiz_list_view.php';
-                break;
-            case 'review':
-                // Rediriger l'utilisateur vers la page Review
-                window.location.href = 'app/views/review/write_review_view.php';
-                break;
-            case 'forums':
-                // Rediriger l'utilisateur vers la page Forums
-                window.location.href = 'app/views/forum/forum_view.php';
-                break;
-        }
-    }
-
-    // Fonction pour fermer le pop-up de confirmation
-    function closeConfirmationPopup() {
-        const confirmationPopup = document.getElementById('confirmationPopup');
-        confirmationPopup.style.display = 'none';
-    }
-
-    function openConfirmationPopup(pageName) {
-        const bonhommeX = bonhomme.x; // Obtenez la position x de votre personnage
-        const bonhommeY = bonhomme.y; // Obtenez la position y de votre personnage
-
-        // Calculez la distance entre le personnage et la porte correspondante (par exemple, porte Jarvis)
-        const distanceToDoor = calculateDistance(bonhommeX, bonhommeY, doors[pageName]);
-
-        // Si la distance est inférieure à 250 pixels, affichez le pop-up de confirmation
-        if (distanceToDoor < 250) {
-            const confirmationPopup = document.getElementById('confirmationPopup');
-            const pageNameElement = document.getElementById('pageName');
-            pageNameElement.textContent = pageName;
-            confirmationPopup.style.display = 'block';
-            openConfirmationPopup(pageName)
-            confirmPageEntry()
-        }
-    }
 
     update();
-
-    function addMessage(message) {
-        const chatMessages = document.getElementById('chat-messages');
-        const messageElement = document.createElement('div');
-        messageElement.textContent = message;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    const messageInput = document.getElementById('message-input');
-
-    messageInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            const message = messageInput.value;
-            if (message.trim() !== '') {
-                addMessage('Moi : ' + message);
-                messageInput.value = '';
-            }
-        }
-    });
-
-
-    function enterPage(page) {
-        switch (page) {
-            case 'jarvis':
-                // Rediriger l'utilisateur vers la page Jarvis
-                window.location.href = 'lien_vers_page_jarvis.html';
-                break;
-            case 'quizz':
-                // Rediriger l'utilisateur vers la page Quizz
-                window.location.href = 'lien_vers_page_quizz.html';
-                break;
-            case 'review':
-                // Rediriger l'utilisateur vers la page Review
-                window.location.href = 'lien_vers_page_review.html';
-                break;
-            case 'forums':
-                // Rediriger l'utilisateur vers la page Forums
-                window.location.href = 'lien_vers_page_forums.html';
-                break;
-        }
-    }
-
-    function closePopup(popupId) {
-        // Masquer la pop-up en modifiant le style CSS
-        document.getElementById(popupId).style.display = 'none';
-    }
 </script>
-
-
 
 </body>
 </html>
