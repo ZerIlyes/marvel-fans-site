@@ -1,10 +1,13 @@
- // Créer la scène
+
+
+// Créer la scène
     var scene = new THREE.Scene();
  var loader = new THREE.TextureLoader();
- loader.load('public/images/dark4.jpg', function(texture) {
-     scene.background = texture;
- });
-    // Ajouter une caméra pour le carrousel
+
+
+
+
+ // Ajouter une caméra pour le carrousel
     var carouselCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
     carouselCamera.position.z = 300;
 
@@ -126,6 +129,7 @@
 });
 }
 }
+
 
     // Ajouter les gestionnaires d'événements de survol et de clic au document
     document.addEventListener('mousemove', onMouseMove, false);

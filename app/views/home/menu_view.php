@@ -33,7 +33,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
-<script src="public/js/menu.js"></script>
+<script type="module" src="public/js/menu.js"></script>
 
 </body>
 </html>
