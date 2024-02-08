@@ -1,0 +1,24 @@
+body {
+    font-family: 'Bangers', cursive;
+    background-image: url('../images/Fond_forum.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.main-container {
+    background-color: white;
+    padding: 20px;
+}
+
+.content-container {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+.forum-title {
+    font-family: 'Bangers', cursive;
+}
+
+

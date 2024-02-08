@@ -1,0 +1,150 @@
+/* write_review_view.css */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    background-image: url('../images/background1.png');
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+
+}
+
+.review-item {
+    background-color: #f8f8f8; border: 1px solid #ddd; border-bottom: 2px solid black; margin-bottom: 20px; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.fa-star {
+    color: #ffd700;
+    cursor: pointer;
+}
+
+.fa-solid {
+    color: gold;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    font-family: 'Bangers', cursive;
+}
+
+.review-form {
+    display: flex;
+    justify-content: center;
+}
+
+.review-form-box {
+    flex-basis: 50%;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Bangers', cursive;
+}
+
+.review-title {
+    color: #ff0000;
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 10px; /* Ajoutez du padding à gauche et à droite */
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Ajustement de la largeur de la div contenant le titre */
+.review-title-div {
+    width: 95%;
+}
+
+/* Ajustement de la largeur de la div contenant le textarea (Votre critique) */
+.review-textarea-div {
+    width: 95%;
+}
+
+
+
+.rating-stars {
+    display: flex;
+}
+
+.submit-button {
+    background-color: #ce3030;
+    border-color: black;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #FFFFFF;
+    text-align: center;
+    margin: 5px;
+}
+
+.review-container {
+    display: flex;
+    justify-content: center;
+}
+
+.review-box {
+    flex-basis: 50%;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-image {
+    float: left;
+    margin-right: 15px;
+    border-radius: 50%;
+    width: 50px; /* Vous pouvez ajuster la taille selon vos besoins */
+    height: 50px; /* Vous pouvez ajuster la taille selon vos besoins */
+}
+
+
+.review-title {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.review-info {
+    margin: 5px 0;
+}
+
+.review-rating {
+    margin: 5px 0;
+}
+
+.review-text {
+    margin: 5px 0;
+}
+/* CSS pour les étoiles spécifiques */
+.rating-stars .fa-star {
+    color: gray;
+    cursor: pointer;
+}
+
+.rating-stars .fa-solid {
+    color: gold;
+}
+
+.review-item {
+    margin-bottom: 3%;
+}

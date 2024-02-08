@@ -1,0 +1,47 @@
+body {
+    background-image: url('../images/Fond_forum.png');
+    font-family: 'Bangers', cursive;
+}
+
+.navbar {
+    background-color: #333;
+    border-radius: 0;
+}
+
+.navbar a.navbar-brand {
+    color: #fff;
+}
+
+.navbar a.navbar-brand:hover {
+    color: #ccc;
+}
+
+.container {
+    background-color: #f5e6da;
+    padding: 20px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: saddlebrown;
+    color: grey;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: brown;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: brown;
+}

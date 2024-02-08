@@ -1,0 +1,122 @@
+
+/* Global styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Bangers', cursive;
+}
+/* Blur background */
+.blur-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/background1.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(10px);
+}
+
+/* Importation de la police Google pour les titres */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+/* Container principal */
+.quiz-container {
+    background-color: rgba(245, 245, 220, 0.8); /* beige très léger avec un peu de transparence */
+    border-radius: 4px;
+    padding: 20px;
+    margin-top: 50px; /* Increased margin-top */
+    max-width: 30% !important;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Ombre pour donner du relief */
+    margin-left: auto; /* Center the card */
+    margin-right: auto; /* Center the card */
+}
+/* Style for quiz card */
+.card.quiz-card {
+    max-width: 30%; /* Set the maximum width of the card to 30% */
+    margin-top: 50px; /* Space from the top */
+    margin-left: auto; /* Center the card horizontally */
+    margin-right: auto; /* Center the card horizontally */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    border-radius: 4px; /* Rounded corners for the card */
+    background-color: #beae92 !important; /* Light beige background */
+    border: 2px solid #b08c6c !important; /* Brown border */
+
+    /* Add other styles like padding, background, etc., as needed */
+}
+
+
+/* Style spécifique pour la div quiz-header */
+.quiz-header {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Centrer le texte dans .quiz-header */
+}
+
+/* Bouton de démarrage du quiz */
+.start-quiz-btn {
+    background-color: #ffcc00; /* Couleur jaune qui correspond à la palette du site */
+    color: black; /* Texte en noir pour le contraste */
+    border: none; /* Pas de bordure */
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition pour l'interaction */
+    position: absolute; /* Positionnement absolu */
+    bottom: 20px; /* Positionné à 20px du bas du .quiz-header */
+    right: 20px; /* Positionné à 20px du côté droit */
+}
+
+.start-quiz-btn:hover {
+    background-color: #e6b800; /* Assombrir le bouton au survol */
+}
+
+/* Assurez-vous que le leaderboard ne chevauche pas l'image de fond */
+.leaderboard-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px; /* Espacement entre le quiz et le leaderboard */
+}
+
+.quiz-image img-fluid {
+    max-height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.leaderboard {
+    background-color: #a0522d;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.avatar {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quiz-container {
+        background-color: rgba(245, 245, 220, 0.95); /* Moins de transparence pour les petits écrans */
+        width: 90%; /* Make the card wider on smaller screens */
+        margin-top: 20px; /* Smaller margin-top on smaller screens */
+    }
+}
+
+
+.start-quiz-btn {
+    position: static; /* Bouton positionné normalement pour les petits écrans */
+    display: block;
+    width: 100%;
+    margin-top: 20px; /* Espacement au-dessus du bouton */
+    transform: none; /* Annuler la transformation pour le centrage */
+}
+
