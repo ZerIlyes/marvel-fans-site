@@ -1,136 +1,131 @@
+// Author: Hoang Tran (https://www.facebook.com/profile.php?id=100004848287494)
+// Github verson (1 file .html): https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
 
+// You can change global variables here:
+var radius = 240; // how big of the radius
+var autoRotate = true; // auto rotate or not
+var rotateSpeed = -60; // unit: seconds/360 degrees
+var imgWidth = 120; // width of images (unit: px)
+var imgHeight = 170; // height of images (unit: px)
 
-// Créer la scène
-    var scene = new THREE.Scene();
- var loader = new THREE.TextureLoader();
+// Link of background music - set 'null' if you dont want to play background music
+var bgMusicURL =
+    "https://api.soundcloud.com/tracks/143041228/stream?client_id=587aa2d384f7333a886010d5f52f302a";
+var bgMusicControls = true; // Show UI music control
 
+/*
+NOTE:
+ + imgWidth, imgHeight will work for video
+ + if imgWidth, imgHeight too small, play/pause button in <video> will be hidden
+ + Music link are taken from: https://hoangtran0410.github.io/Visualyze-design-your-own-/?theme=HauMaster&playlist=1&song=1&background=28
+ + Custom from code in tiktok video  https://www.facebook.com/J2TEAM.ManhTuan/videos/1353367338135935/
+*/
 
+// ===================== start =======================
+setTimeout(init, 100);
 
+var odrag = document.getElementById("drag-container");
+var ospin = document.getElementById("spin-container");
+var aImg = ospin.getElementsByTagName("img");
+var aVid = ospin.getElementsByTagName("video");
+var aEle = [...aImg, ...aVid]; // combine 2 arrays
 
- // Ajouter une caméra pour le carrousel
-    var carouselCamera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 1000);
-    carouselCamera.position.z = 300;
+// Size of images
+ospin.style.width = imgWidth + "px";
+ospin.style.height = imgHeight + "px";
 
-    // Créer le rendu
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+// Size of ground - depend on radius
+var ground = document.getElementById("ground");
+ground.style.width = radius * 3 + "px";
+ground.style.height = radius * 3 + "px";
 
-    // Charger les images de bandes dessinées
-    var textureLoader = new THREE.TextureLoader();
-    var textures = [
-    { texture: textureLoader.load('./public/images/Quizzz.png'), link: 'index.php?action=quiz_list' },
-    { texture: textureLoader.load('./public/images/Forums.png'), link: 'index.php?action=forum_topics' },
-    { texture: textureLoader.load('./public/images/Review.png'), link: 'index.php?action=write_review' },
-    { texture: textureLoader.load('./public/images/Jarviss.png'), link: 'index.php?action=jarvis' },
-    // Ajoutez vos autres images ici avec les liens correspondant
-    ];
-
-
-    // Variables globales pour le rayon et les meshs
-    var radius = 100; // Réduisez cette valeur pour rapprocher les images
-    var meshes = [];
-
-    // Créer des meshs avec ces textures et les positionner
-    textures.forEach(function(item, index) {
-    var geometry = new THREE.PlaneGeometry(75, 50);
-    var material = new THREE.MeshBasicMaterial({
-    map: item.texture,
-    side: THREE.DoubleSide // Ajouter cette ligne pour rendre le matériau visible des deux côtés
-});
-    var mesh = new THREE.Mesh(geometry, material);
-    var angle = (index / textures.length) * Math.PI * 2;
-    mesh.position.x = radius * Math.cos(angle);
-    mesh.position.y = radius * Math.sin(angle);
-    mesh.lookAt(new THREE.Vector3(0, 0, 0));
-    scene.add(mesh);
-    meshes.push({ mesh: mesh, link: item.link }); // Stocker les meshs et les liens pour une utilisation ultérieure
-});
-
-    // Ajouter un contrôle pour le carrousel
-    var carouselControls = new THREE.OrbitControls(carouselCamera, renderer.domElement);
-    carouselControls.enableZoom = false;
-
-    // Variables pour la rotation du carrousel
-    var carouselSpeed = 0.003; // Vitesse de rotation du carrousel
-    var carouselRotation = 0; // Rotation actuelle du carrousel
-
-    // La boucle de rendu
-    function animate() {
-    requestAnimationFrame(animate);
-
-    // Rotation du carrousel en continu
-    carouselRotation += carouselSpeed;
-    meshes.forEach(function(item, index) {
-    var angle = carouselRotation + (index / textures.length) * Math.PI * 2;
-    item.mesh.position.x = radius * Math.cos(angle);
-    item.mesh.position.y = radius * Math.sin(angle);
-    item.mesh.lookAt(new THREE.Vector3(0, 0, 0)); // S'assurer que les images regardent vers le centre
-});
-
-    renderer.render(scene, carouselCamera);
+function init(delayTime) {
+    for (var i = 0; i < aEle.length; i++) {
+        aEle[i].style.transform =
+            "rotateY(" +
+            i * (360 / aEle.length) +
+            "deg) translateZ(" +
+            radius +
+            "px)";
+        aEle[i].style.transition = "transform 1s";
+        aEle[i].style.transitionDelay =
+            delayTime || (aEle.length - i) / 4 + "s";
+    }
 }
 
-    animate();
+function applyTranform(obj) {
+    // Constrain the angle of camera (between 0 and 180)
+    if (tY > 180) tY = 180;
+    if (tY < 0) tY = 0;
 
-    // Ajouter des gestionnaires d'événements pour le survol et le clic
-    var raycaster = new THREE.Raycaster();
-    var mouse = new THREE.Vector2();
-
-    function onMouseMove(event) {
-    // Mettre à jour les coordonnées de la souris
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    // Mettre à jour le raycaster avec la position de la souris
-    raycaster.setFromCamera(mouse, carouselCamera);
-
-    // Vérifier les intersections
-    var intersects = raycaster.intersectObjects(meshes.map(function(item) {
-    return item.mesh;
-}));
-
-    // Si la souris survole un objet, appliquer l'effet de survol
-    if (intersects.length > 0) {
-    var intersected = intersects[0].object;
-    meshes.forEach(function(item) {
-    if (item.mesh === intersected) {
-    item.mesh.scale.set(1.2, 1.2, 1.2); // Appliquer l'effet de survol
-}
-});
-} else {
-    // Si la souris ne survole pas d'objet, réinitialiser l'échelle de tous les objets
-    meshes.forEach(function(item) {
-    item.mesh.scale.set(1, 1, 1);
-});
-}
+    // Apply the angle
+    obj.style.transform = "rotateX(" + -tY + "deg) rotateY(" + tX + "deg)";
 }
 
-    function onMouseClick(event) {
-    // Mettre à jour les coordonnées de la souris
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    // Mettre à jour le raycaster avec la position de la souris
-    raycaster.setFromCamera(mouse, carouselCamera);
-
-    // Vérifier les intersections
-    var intersects = raycaster.intersectObjects(meshes.map(function(item) {
-    return item.mesh;
-}));
-
-    // Si la souris clique sur un objet, ouvrir le lien associé
-    if (intersects.length > 0) {
-    var intersected = intersects[0].object;
-    meshes.forEach(function(item) {
-    if (item.mesh === intersected) {
-    window.open(item.link, '_blank'); // Ouvre le lien dans un nouvel onglet
-}
-});
-}
+function playSpin(yes) {
+    ospin.style.animationPlayState = yes ? "running" : "paused";
 }
 
+var sX,
+    sY,
+    nX,
+    nY,
+    desX = 0,
+    desY = 0,
+    tX = 0,
+    tY = 10;
 
-    // Ajouter les gestionnaires d'événements de survol et de clic au document
-    document.addEventListener('mousemove', onMouseMove, false);
-    document.addEventListener('click', onMouseClick, false);
+// auto spin
+if (autoRotate) {
+    var animationName = rotateSpeed > 0 ? "spin" : "spinRevert";
+    ospin.style.animation = `${animationName} ${Math.abs(
+        rotateSpeed
+    )}s infinite linear`;
+
+}
+
+// setup events
+document.onpointerdown = function(e) {
+    clearInterval(odrag.timer);
+    e = e || window.event;
+    var sX = e.clientX,
+        sY = e.clientY;
+
+    this.onpointermove = function(e) {
+        e = e || window.event;
+        var nX = e.clientX,
+            nY = e.clientY;
+        desX = nX - sX;
+        desY = nY - sY;
+        tX += desX * 0.1;
+        tY += desY * 0.1;
+        applyTranform(odrag);
+        sX = nX;
+        sY = nY;
+    };
+
+    this.onpointerup = function(e) {
+        odrag.timer = setInterval(function() {
+            desX *= 0.95;
+            desY *= 0.95;
+            tX += desX * 0.1;
+            tY += desY * 0.1;
+            applyTranform(odrag);
+            playSpin(false);
+            if (Math.abs(desX) < 0.5 && Math.abs(desY) < 0.5) {
+                clearInterval(odrag.timer);
+                playSpin(true);
+            }
+        }, 17);
+        this.onpointermove = this.onpointerup = null;
+    };
+
+    return false;
+};
+
+document.onmousewheel = function(e) {
+    e = e || window.event;
+    var d = e.wheelDelta / 20 || -e.detail;
+    radius += d;
+    init(1);
+};

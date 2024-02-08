@@ -5,6 +5,7 @@
     <title>Carrousel 3D de Bandes Dessinées</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/menu.css">
+
 </head>
 <body>
 <!-- Dropdown Bootstrap pour le nom d'utilisateur -->
@@ -16,7 +17,6 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="index.php?action=logout">Déconnexion</a>
             <a class="dropdown-item" href="index.php?action=moncompte">Mon Compte</a>
-            <!-- Le bouton Administrateur ne sera visible que si l'utilisateur est un admin -->
             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
                 <a class="dropdown-item" href="index.php?action=admin_panel">Administrateur</a>
             <?php endif; ?>
@@ -24,15 +24,41 @@
     <?php endif; ?>
 </div>
 
-<!-- Reste de votre contenu HTML -->
 
-<!-- Scripts nécessaires pour Bootstrap -->
+<!-- Intégration du Carrousel 3D ici -->
+<div id="drag-container">
+    <div id="spin-container">
+        <!-- Lien vers Quizz -->
+        <a href="index.php?action=quiz_list">
+            <img src="public/images/Quizzz.png" alt="Quiz" >
+        </a>
+        <!-- Lien vers Forum -->
+        <a href="index.php?action=forum_topics">
+            <img src="public/images/Forums.png" alt="Forum" >
+        </a>
+        <!-- Lien vers Review -->
+        <a href="index.php?action=write_review">
+            <img src="./public/images/Review.png" alt="Review">
+        </a>
+        <!-- Lien vers Jarvis -->
+        <a href="index.php?action=jarvis">
+            <img src="public/images/Jarviss.png" alt="Jarvis" >
+        </a>
+        <!-- Text at center of ground -->
+        <p>©2024 Tous droits réservés : ComicsFan.com</p>
+    </div>
+    <div id="ground"></div>
+</div>
+
+
+<!-- Scripts nécessaires pour Bootstrap et le Carrousel -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+<!-- Supprimez OrbitControls si non utilisé -->
 <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
+<!-- Assurez-vous que le chemin d'accès à votre script JS est correct -->
 <script type="module" src="public/js/menu.js"></script>
 
 </body>
