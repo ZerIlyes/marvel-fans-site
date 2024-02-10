@@ -164,12 +164,12 @@ class UserModel {
 
 
     // Inscription d'un nouvel utilisateur
-    public function registerUser($username, $email, $passwordHash) {
+    public function registerUser($username, $email, $passwordHash,$avatarPath) {
         global $conn; // Utilisez la connexion globale
 
         // Préparation de la requête
-        $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $passwordHash);
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash,avatar_path) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $username, $email, $passwordHash, $avatarPath);
 
         // Exécution et vérification
         if ($stmt->execute()) {

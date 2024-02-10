@@ -34,8 +34,8 @@ class AuthController {
             $username = $_POST['username']; // Valider et nettoyer ces données
             $email = $_POST['email'];
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-            $userId = $this->userModel->registerUser($username, $email, $password);
+            $avatarPath = $_POST['avatar'];
+            $userId = $this->userModel->registerUser($username, $email, $password,$avatarPath);
             if ($userId) {
                 // Inscription réussie, connectez l'utilisateur automatiquement
                 $_SESSION['loggedin'] = true; // Ajout de cette ligne
