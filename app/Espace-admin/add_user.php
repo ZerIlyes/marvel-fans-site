@@ -1,7 +1,7 @@
 <?php
 require_once 'admin.php';
 require_once '../config.php';
-
+// Amgad
 // Traitement du formulaire d'ajout d'utilisateur
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newUsername = $_POST["new_username"];

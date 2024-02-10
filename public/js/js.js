@@ -54,7 +54,6 @@
                     try {
                         var data = JSON.parse(response);
                         if (data.success) {
-                            // Ajoutez ici le code pour ajouter l'utilisateur dans la liste sur la page
                             // Fermez le modal
                             $('#addUserModal').modal('hide');
                         } else {

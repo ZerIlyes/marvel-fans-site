@@ -7,6 +7,7 @@ body, html {
     background-position: center;
     background-repeat: repeat;
     background-size: cover;
+    font-family: 'Bangers', cursive;
 
 }
 
@@ -60,17 +61,16 @@ body, html {
 
 .form-control {
     width: 100%;
-    padding: 10px 10px; /* Ajoutez du padding à gauche et à droite */
+    padding: 10px 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
 }
 
-/* Ajustement de la largeur de la div contenant le titre */
 .review-title-div {
     width: 95%;
 }
 
-/* Ajustement de la largeur de la div contenant le textarea (Votre critique) */
+
 .review-textarea-div {
     width: 95%;
 }
@@ -114,8 +114,8 @@ body, html {
     float: left;
     margin-right: 15px;
     border-radius: 50%;
-    width: 50px; /* Vous pouvez ajuster la taille selon vos besoins */
-    height: 50px; /* Vous pouvez ajuster la taille selon vos besoins */
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -135,7 +135,8 @@ body, html {
 .review-text {
     margin: 5px 0;
 }
-/* CSS pour les étoiles spécifiques */
+
+
 .rating-stars .fa-star {
     color: gray;
     cursor: pointer;

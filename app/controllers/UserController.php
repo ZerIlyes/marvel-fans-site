@@ -3,7 +3,7 @@ require_once 'app/models/Model.php'; // Assurez-vous d'inclure le modèle UserMo
 
 class UserController {
     private $userModel;
-    private $passwordError; // Déclarez la variable en dehors de la fonction
+    private $passwordError;
 
     public function __construct() {
         $this->userModel = new UserModel();
@@ -54,11 +54,8 @@ class UserController {
 
 
 
-
-
-
     public function showUserList() {
-        $users = $this->userModel->getUsers(); // Assurez-vous que cette méthode existe et renvoie tous les utilisateurs
+        $users = $this->userModel->getUsers();
         require 'app/views/admin/user_list_view.php';
     }
 

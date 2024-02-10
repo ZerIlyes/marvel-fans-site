@@ -19,7 +19,6 @@ class UserTopicsController {
         $user = $this->userTopicsModel->getUsername($userId);
         $userTopics = $this->userTopicsModel->getUserTopics($userId);
 
-        // Assurez-vous de passer les bonnes variables à la vue
         include 'app/views/admin/user_topics_view.php';
     }
     public function deleteTopic($topicId) {

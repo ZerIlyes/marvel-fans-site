@@ -12,7 +12,7 @@ class ForumController {
     public function showTopics() {
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
         $topics = $this->forumModel->getTopics($searchQuery); // Récupérer les sujets
-        require 'app/views/forum/forum_view.php'; // Assurez-vous que le chemin vers la vue est correct
+        require 'app/views/forum/forum_view.php';
     }
     public function submitPost($postData) {
         $userId = $_SESSION['user_id'] ?? null;

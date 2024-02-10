@@ -40,13 +40,13 @@ body {
 
 /* Individual quiz card styles */
 .quiz-card {
-    background: linear-gradient(to bottom, rgba(245, 245, 220, 0.3) 0%, rgba(245, 245, 220, 0.8) 100%); /* Soft beige gradient */
-    backdrop-filter: blur(5px); /* Optional: Adds a blur effect to the background */
-    color: #333; /* Adjust the text color if needed */
+    background: linear-gradient(to bottom, rgba(245, 245, 220, 0.3) 0%, rgba(245, 245, 220, 0.8) 100%);
+    backdrop-filter: blur(5px);
+    color: #333;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px; /* Fixed width */
-    height: 500px; /* Fixed height */
+    width: 200px;
+    height: 500px;
     overflow: hidden;
     transition: transform 0.3s;
     display: flex;
@@ -59,17 +59,17 @@ body {
 
 /* Style pour l'image du quiz */
 .quiz-card img {
-    width: 100%; /* Image covers the full width */
-    height: 60%; /* Image covers 60% of the card height */
-    object-fit: cover; /* Assure que l'image couvre l'espace disponible sans déformation */
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
 }
 
 .quiz-card .content {
     padding: 15px;
-    height: 30%; /* Adjusted space for content */
+    height: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribute space between title and description */
+    justify-content: space-between;
 
 }
 
@@ -93,7 +93,7 @@ body {
 /* Description dans la carte */
 .description {
     font-size: 0.9em;
-    margin: 0; /* Pas de marge pour la description */
+    margin: 0;
 }
 
 /* Responsive adjustments */
@@ -105,6 +105,6 @@ body {
 
     .quiz-card {
         width: 90%;
-        height: auto; /* Height auto for responsiveness */
+        height: auto;
     }
 }

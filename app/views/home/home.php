@@ -18,10 +18,9 @@
 <?php include 'app/views/auth/registerModalView.php'; ?>
 <script src="public/js/scene3d.js"></script>
 
-<!-- Liens vers les scripts JavaScript de Bootstrap (jQuery et Popper.js) -->
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<!-- Lien vers le fichier JavaScript de Bootstrap -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

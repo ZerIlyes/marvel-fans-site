@@ -114,7 +114,6 @@ if ($action) {
         case 'create_user':
             // Vérifiez si l'utilisateur est administrateur avant de créer un utilisateur
             if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1 && $_SERVER['REQUEST_METHOD'] == 'POST') {
-                // Vous devez créer une méthode dans UserController pour traiter la création d'un nouvel utilisateur
                 $userController->createUser($_POST);
             } else {
                 // Rediriger l'utilisateur ou afficher une erreur
@@ -133,8 +132,6 @@ if ($action) {
                 // Gérer l'erreur ou ignorer la demande
             }
             break;
-
-        // Autres cas d'action...
         default:
             include 'app/views/home/home.php';
             break;

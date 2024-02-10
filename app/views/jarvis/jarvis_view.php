@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Jarvis - Site Communautaire de Comics</title>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="public/css/jarvis.css">
-    <link rel="stylesheet" href="public/css/redirection.css">
+
 </head>
 <body>
 <?php include 'public/redirection.php'; ?>

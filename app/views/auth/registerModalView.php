@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
-<!-- Les liens de navigation ici... -->
 
 <!-- Modal d'inscription -->
 <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
@@ -31,7 +30,6 @@
                             <option value="public/images/spiderman.png">Spiderman</option>
                             <option value="public/images/Venom.png">Venom</option>
                             <option value="public/images/Wolverine.png">Wolverine</option>
-                            <!-- Ajoutez les autres options d'avatar ici -->
                         </select>
                     </div>
                     <div class="d-flex justify-content-center mb-3">
