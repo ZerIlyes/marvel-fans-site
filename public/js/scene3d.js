@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var textureLoader = new THREE.TextureLoader();
     var materials = [
-        new THREE.MeshBasicMaterial({ map: textureLoader.load('public/images/Connectez.png'), side: THREE.DoubleSide }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load('public/images/Connectez.webp'), side: THREE.DoubleSide }),
         new THREE.MeshBasicMaterial({ map: textureLoader.load('public/images/Inscription.png'), side: THREE.DoubleSide })
     ];
 

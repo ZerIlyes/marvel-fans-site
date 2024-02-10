@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : dim. 28 jan. 2024 à 13:46
+-- Généré le : sam. 10 fév. 2024 à 12:28
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -96,46 +96,62 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`option_id`, `question_id`, `option_text`, `is_correct`) VALUES
-(1, 1, 'Wanda Romanoff', 0),
-(2, 1, 'Wanda Maximoff', 1),
-(3, 1, 'Wanda Pym', 0),
-(4, 1, 'Wanda Stark', 0),
-(5, 2, 'La Pierre de l’Espace', 0),
-(6, 2, 'La Pierre de l’Esprit', 1),
-(7, 2, 'La Pierre de Réalité', 0),
-(8, 2, 'La Pierre du Pouvoir', 0),
-(9, 3, 'Pietro Maximoff', 1),
-(10, 3, 'John Maximoff', 0),
-(11, 3, 'Tony Stark', 0),
-(12, 3, 'Victor Maximoff', 0),
-(13, 4, 'Steven Rogers', 0),
-(14, 4, 'Stephen Strange', 1),
-(15, 4, 'Tony Stark', 0),
-(16, 4, 'Bruce Banner', 0),
-(17, 5, 'Le Sceptre', 0),
-(18, 5, 'L’Œil d’Agamotto', 1),
-(19, 5, 'La Cape de Lévitation', 0),
-(20, 5, 'Le Mjolnir', 0),
-(21, 6, 'Wong', 0),
-(22, 6, 'L’Ancien', 1),
-(23, 6, 'Baron Mordo', 0),
-(24, 6, 'Dormammu', 0),
-(41, 11, 'Hulk', 1),
-(42, 11, 'Ant-Man', 0),
-(43, 11, 'Black Widow', 0),
-(44, 11, 'Hawkeye', 0),
-(45, 12, 'Loki', 1),
-(46, 12, 'Hela', 0),
-(47, 12, 'Malekith', 0),
-(48, 12, 'Laufey', 0),
-(49, 13, 'Iron Man 2', 0),
-(50, 13, 'Thor', 1),
-(51, 13, 'The Avengers', 0),
-(52, 13, 'Captain America: The First Avenger', 0),
-(53, 14, 'Frigga', 1),
-(54, 14, 'Sif', 0),
-(55, 14, 'Jane Foster', 0),
-(56, 14, 'Freya', 0);
+(89, 1, 'Wanda Maximoff', 1),
+(90, 1, 'Natasha Romanoff', 0),
+(91, 1, 'Monica Rambeau', 0),
+(92, 1, 'Carol Danvers', 0),
+(93, 2, 'La Pierre de l\'Esprit', 1),
+(94, 2, 'La Pierre du Temps', 0),
+(95, 2, 'La Pierre de l\'Espace', 0),
+(96, 2, 'La Pierre de la Réalité', 0),
+(97, 3, 'Pietro Maximoff', 1),
+(98, 3, 'Victor Maximoff', 0),
+(99, 3, 'John Maximoff', 0),
+(100, 3, 'Tony Stark', 0),
+(101, 4, 'Stephen Strange', 1),
+(102, 4, 'Stephen Vincent', 0),
+(103, 4, 'Steven Rogers', 0),
+(104, 4, 'Stephen Vincent Strange', 0),
+(105, 5, 'L’Œil d’Agamotto', 1),
+(106, 5, 'Le Sceptre', 0),
+(107, 5, 'Le Tesseract', 0),
+(108, 5, 'Le Mjolnir', 0),
+(109, 6, 'L’Ancien', 1),
+(110, 6, 'Wong', 0),
+(111, 6, 'Baron Mordo', 0),
+(112, 6, 'Karl Mordo', 0),
+(113, 7, 'Tony Stark', 1),
+(114, 7, 'Steve Rogers', 0),
+(115, 7, 'Bruce Banner', 0),
+(116, 7, 'Peter Parker', 0),
+(117, 8, 'Robert Downey Jr.', 1),
+(118, 8, 'Chris Evans', 0),
+(119, 8, 'Mark Ruffalo', 0),
+(120, 8, 'Tom Holland', 0),
+(121, 9, 'James Rhodes', 1),
+(122, 9, 'Clint Barton', 0),
+(123, 9, 'Scott Lang', 0),
+(124, 9, 'Sam Wilson', 0),
+(125, 10, 'Stark Industries', 1),
+(126, 10, 'Pym Technologies', 0),
+(127, 10, 'Oscorp Industries', 0),
+(128, 10, 'Hammer Industries', 0),
+(129, 11, 'Captain America', 1),
+(130, 11, 'Black Widow', 0),
+(131, 11, 'Hulk', 0),
+(132, 11, 'Hawkeye', 0),
+(133, 12, 'Obadiah Stane', 1),
+(134, 12, 'Loki', 0),
+(135, 12, 'Ultron', 0),
+(136, 12, 'Thanos', 0),
+(137, 13, 'Thor', 1),
+(138, 13, 'The Dark World', 0),
+(139, 13, 'Ragnarok', 0),
+(140, 13, 'Love and Thunder', 0),
+(141, 14, 'Frigga', 1),
+(142, 14, 'Sif', 0),
+(143, 14, 'Jane Foster', 0),
+(144, 14, 'Hela', 0);
 
 -- --------------------------------------------------------
 
@@ -156,10 +172,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `topic_id`, `user_id`, `content`, `created_at`) VALUES
-(1, 4, 16, 'grthsryj', '2024-01-07 18:40:54'),
-(2, 3, 16, 'zaadz', '2024-01-07 18:49:42'),
 (3, 5, 17, 'bonjour\r\n', '2024-01-07 19:30:46'),
-(4, 6, 17, 'Bonjour tout le monde \r\n', '2024-01-07 19:37:05');
+(4, 6, 17, 'Bonjour tout le monde \r\n', '2024-01-07 19:37:05'),
+(5, 9, 17, 'RAYANEE', '2024-02-09 15:35:05');
 
 -- --------------------------------------------------------
 
@@ -185,14 +200,14 @@ INSERT INTO `questions` (`question_id`, `quiz_id`, `question_text`, `correct_ans
 (4, 2, 'Quel est le vrai nom de Doctor Strange?', 'Stephen Strange'),
 (5, 2, 'Quel objet Doctor Strange utilise-t-il pour manipuler le temps?', 'L’Œil d’Agamotto'),
 (6, 2, 'Qui est l’ancien mentor de Doctor Strange?', 'L’Ancien'),
-(11, 3, 'Quelle est l\'identité secrète d\'Iron Man?', ''),
-(12, 3, 'Quel acteur joue Iron Man dans l\'Univers Cinématographique Marvel?', ''),
-(13, 3, 'Quel est le nom du meilleur ami d\'Iron Man, qui devient aussi War Machine?', ''),
-(14, 3, 'Quel est le nom de l\'entreprise fondée par la famille Stark?', ''),
-(15, 4, 'Quel autre Avenger partage une grande amitié avec Thor?', ''),
-(16, 4, 'Qui est le principal méchant dans le premier film de Thor?', ''),
-(17, 4, 'Dans quel film Thor apparaît-il pour la première fois dans l\'Univers Cinématographique Marvel?', ''),
-(18, 4, 'Comment s\'appelle la mère de Thor?', '');
+(7, 3, 'Quelle est l\'identité secrète d\'Iron Man?', 'Tony Stark'),
+(8, 3, 'Quel acteur joue Iron Man dans l\'Univers Cinématographique Marvel?', 'Robert Downey Jr.'),
+(9, 3, 'Quel est le nom du meilleur ami d\'Iron Man, qui devient aussi War Machine?', 'James Rhodes'),
+(10, 3, 'Quel est le nom de l\'entreprise fondée par la famille Stark?', 'Stark Industries'),
+(11, 4, 'Quel autre Avenger partage une grande amitié avec Thor?', 'Captain America'),
+(12, 4, 'Qui est le principal méchant dans le premier film de Thor?', 'Obadiah Stane'),
+(13, 4, 'Dans quel film Thor apparaît-il pour la première fois dans l\'Univers Cinématographique Marvel?', 'Thor'),
+(14, 4, 'Comment s\'appelle la mère de Thor?', 'Frigga');
 
 -- --------------------------------------------------------
 
@@ -233,6 +248,16 @@ CREATE TABLE `results` (
   `quiz_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `results`
+--
+
+INSERT INTO `results` (`result_id`, `user_id`, `quiz_id`, `score`, `quiz_date`) VALUES
+(1, 17, 3, 400, '2024-02-10 11:28:07'),
+(2, 17, 1, 100, '2024-02-08 13:27:31'),
+(3, 17, 2, 200, '2024-02-10 11:26:12'),
+(4, 17, 4, 400, '2024-02-10 11:28:22');
+
 -- --------------------------------------------------------
 
 --
@@ -253,12 +278,12 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`review_id`, `movie_series_title`, `review`, `rating`, `user_id`, `created_at`) VALUES
-(5, 'Avengers : Endgame', 'Grave nul', 1, 16, '2024-01-07 18:47:13'),
-(6, 'Iron man 3', 'Pas ouf', 2, 16, '2024-01-07 18:48:08'),
 (7, 'Wand', 'blabla', 3, 17, '2024-01-07 19:30:18'),
 (8, 'End game', 'Franchement c\'etait guez', 4, 17, '2024-01-07 19:36:30'),
 (9, 'Selim vs SKG sur rust', 'guez', 4, 17, '2024-01-08 17:16:54'),
-(10, 'Wand', 'rara', 5, 17, '2024-01-08 18:30:32');
+(10, 'Wand', 'rara', 5, 17, '2024-01-08 18:30:32'),
+(11, 'Iron man 4', 'pas fou', 3, 17, '2024-02-08 13:30:06'),
+(12, 'Test', 'rararar', 5, 17, '2024-02-09 15:35:30');
 
 -- --------------------------------------------------------
 
@@ -278,14 +303,11 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`topic_id`, `title`, `user_id`, `created_at`) VALUES
-(1, 'avengers', 16, '2024-01-07 17:42:03'),
-(2, 'zizi', 16, '2024-01-07 17:46:15'),
-(3, 'iop', 16, '2024-01-07 17:50:45'),
-(4, 'hetrhrt', 16, '2024-01-07 18:40:51'),
 (5, 'Lol', 17, '2024-01-07 19:30:41'),
 (6, 'Wanda vs Wonderwoman', 17, '2024-01-07 19:36:59'),
 (7, 'On va parler du downfall de l\'ARS', 17, '2024-01-08 17:17:09'),
-(8, 'razra', 17, '2024-01-08 18:30:46');
+(8, 'razra', 17, '2024-01-08 18:30:46'),
+(9, 'Rayane', 17, '2024-02-09 15:35:01');
 
 -- --------------------------------------------------------
 
@@ -308,10 +330,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `created_at`, `is_admin`, `avatar_path`) VALUES
-(16, 'bibot', 'bibot@gmail.com', '$2y$10$7NGkZLzfrS8bCpzUGD0B7eUqByXFA7R.SdDPDmhRZd95gI.wSxw6S', '2024-01-07 17:23:20', 0, 'public/ironman.png'),
-(17, 'Rayane', 'salahabed3@gmail.com', '$2y$10$WUS4cluwFHoFF4Qco3XlpuKU/qEz.zjDTvciPQ16DKUUXr1G8o9tC', '2024-01-07 19:29:19', 0, 'public/spiderman.png'),
-(18, 'Flash_le_plus_rapide', 'cesmoilemeilleur@gmail.com', '$2y$10$H1pGfUcnrgBKagj9cLBD.eeJBDewr4AOaC84H2iIv4Qrfg5D8EDXK', '2024-01-07 19:35:30', 0, 'public/the-flash.png'),
-(19, 'Slimane95210', 'rayaneabed@gmail.com', '$2y$10$WCCcaSzKXl/GjsqP8O377eHi3QC4wRj3MlgRen9pWqYfkTGIG7OCm', '2024-01-28 12:43:50', 0, 'public/images/Captainamerica.png');
+(17, 'Rayane', 'Salahabed3@gmail.com', '$2y$10$ZapTLpz.EXcdszDTilo6QOqI6W9bSUPK7onDsYJJ54LTF4Qwn8RFq', '2024-01-07 19:29:19', 1, 'public/images/Ironman.png'),
+(19, 'Slimane95210', 'rayaneabed@gmail.com', '$2y$10$WCCcaSzKXl/GjsqP8O377eHi3QC4wRj3MlgRen9pWqYfkTGIG7OCm', '2024-01-28 12:43:50', 0, 'public/images/Captainamerica.png'),
+(20, 'Raniny', 'salahabed033@gmail.com', '$2y$10$.MZ8AWJkCy/yrOqgas5WPuYmio1CRH1P0blXbZLl8E8NHkfReSFmy', '2024-02-09 15:37:53', 0, 'public/images/Ironman.png'),
+(21, 'rzarzara', 'popo@gmail.com', '$2y$10$BF2zJgIT4wlCBCSONVRg5u3ABjZ4SObfmF01xP.UZQ8eq1022Bu3m', '2024-02-09 23:42:49', 0, ''),
+(22, 'popo@gmail.com', 'portehaciz55@gmail.com', '$2y$10$wfg2i/WnTKq8Cx6.2Ny6sO.mp3G5ObppuvD3ji74cD9.PsKoH2Zdi', '2024-02-09 23:46:58', 0, ''),
+(23, 'AZRAZRZARZAR', 'REATRA@GMAIL.COM', '$2y$10$EtvavoaG7BWZNT.IEdch7eLsRTE4spyr9Tys.QXT7zi5zCCsMaONS', '2024-02-09 23:51:37', 0, ''),
+(24, 'Salahabed333@gmail.com', 'Salahabed333@gmail.com', '$2y$10$RpjlFqy3vimPz7AFKVO9aOlXiB0iJmsbq3fotoQkzz4ivjqMSxxly', '2024-02-10 00:20:16', 0, 'public/images/Venom.png'),
+(25, 'Salahabed333@gmail.com', 'Salahabed333@gmail.com', '$2y$10$QKUV7U36OJKWqKpbj/w1T.xx0XCq76WW8/FHHgmEkzyLM3OAzNE66', '2024-02-10 00:20:25', 0, 'public/images/Venom.png'),
+(26, 'Salahabed333@gmail.com', 'Salahabed333@gmail.com', '$2y$10$b0nsOIYjII4enhbYwDL02e8DWhMmLhmYe0vMoO2HGNBRqJt0.O/AW', '2024-02-10 00:21:27', 0, 'public/images/Captainamerica.png'),
+(27, 'blabla', 'portehacizz@gmail.com', '$2y$10$XMjWCLJdCO7QM7l55b3rCeHf7/NnIoolKlIUBHme.EztPXLf0tB.W', '2024-02-10 00:28:00', 0, 'public/images/Wolverine.png');
 
 --
 -- Index pour les tables déchargées
@@ -432,13 +460,13 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT pour la table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT pour la table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `questions`
@@ -456,25 +484,25 @@ ALTER TABLE `quiz`
 -- AUTO_INCREMENT pour la table `results`
 --
 ALTER TABLE `results`
-  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `result_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `topic_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Contraintes pour les tables déchargées
