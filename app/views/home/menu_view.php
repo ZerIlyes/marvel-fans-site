@@ -8,7 +8,6 @@
 
 </head>
 <body>
-<!-- Dropdown Bootstrap pour le nom d'utilisateur -->
 <div class="dropdown">
     <?php if (isset($_SESSION['username'])): ?>
         <button class="btn btn-secondary dropdown-toggle username-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,21 +43,18 @@
         <a href="index.php?action=jarvis">
             <img src="public/images/Jarviss.png" alt="Jarvis" >
         </a>
-        <!-- Text at center of ground -->
+        <!-- Texte au centre du carrousel -->
         <p>©2024 Tous droits réservés : ComicsFan.com</p>
     </div>
     <div id="ground"></div>
 </div>
 
 
-<!-- Scripts nécessaires pour Bootstrap et le Carrousel -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
-<!-- Supprimez OrbitControls si non utilisé -->
 <script src="https://cdn.jsdelivr.net/npm/three/examples/js/controls/OrbitControls.js"></script>
-<!-- Assurez-vous que le chemin d'accès à votre script JS est correct -->
 <script type="module" src="public/js/menu.js"></script>
 
 </body>

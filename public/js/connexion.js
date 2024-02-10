@@ -14,13 +14,12 @@ $(document).ready(function() {
                     $('.alert').remove(); // Supprime les alertes précédentes
                     $('.modal-body').prepend('<div class="alert alert-danger">' + response.message + '</div>');
                 } else {
-                    // Si la connexion est réussie, rediriger vers l'URL fournie dans la réponse
-                    window.location.href = response.redirect; // Utilisez la propriété 'redirect' de la réponse JSON
+                    window.location.href = response.redirect;
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error("Une erreur est survenue: ", textStatus, errorThrown);
-                console.log("Réponse du serveur: ", jqXHR.responseText); // Cela affichera la réponse du serveur, utile pour le débogage
+                console.log("Réponse du serveur: ", jqXHR.responseText);
             }
         });
     });

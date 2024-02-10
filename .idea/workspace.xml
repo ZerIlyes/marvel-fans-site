@@ -4,16 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9dfaaf0-655a-4d1a-b3be-bbb84a5b46e1" name="Changes" comment="Commit final S5">
-      <change afterPath="$PROJECT_DIR$/app/public/redirection.php" afterDir="false" />
+    <list default="true" id="b9dfaaf0-655a-4d1a-b3be-bbb84a5b46e1" name="Changes" comment="New Connectez + Fix quizz questions">
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08_02_2024_14_53__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_08_02_2024_14_53__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/Logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/OIG2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/marvelstudiosmcu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/menu3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/menu4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/quiz_preview.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Contact/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Contact/contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Espace-admin/add_user.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Espace-admin/add_user.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Espace-admin/delete_topic.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Espace-admin/delete_topic.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Espace-admin/user_topics.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Espace-admin/user_topics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ForumController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ForumController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/QuizController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/QuizController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ReviewController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/UserTopicsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/UserTopicsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/404.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/add_user_modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/add_user_modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/user_topics_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/user_topics_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/auth/registerModalView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/auth/registerModalView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/footer.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/menu_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/menu_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/moncompte_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/moncompte_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/jarvis/jarvis_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/jarvis/jarvis_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/quiz/quiz_question_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/quiz/quiz_question_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/review/write_review_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/review/write_review_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/create_topic.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/create_topic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/jarvis.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/jarvis.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/quiz_end.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/quiz_end.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/quiz_preview1.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/quiz_preview1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/quiz_question.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/quiz_question.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/quizz_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/quizz_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/redirection.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/redirection.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/user_topics_admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/topic.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/topic.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/write_review_view.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/write_review_view.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/Logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/Wanda_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/illustration1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/illustration2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/marvelstudiosmcu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/menu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/menu2.png.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/menu_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/wanda_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/connexion.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/connexion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/jarvis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/jarvis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/js.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/js.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/review.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/review.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/scene3d.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/scene3d.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/redirection.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/redirection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,13 +128,16 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2buoLdV1lKGhxaDaVFEQHokNaUj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
@@ -105,6 +152,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\marvel-fans-site\public\css" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -140,14 +192,42 @@
       <option name="project" value="LOCAL" />
       <updated>1707399587000</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix Background forum">
+      <option name="closed" value="true" />
+      <created>1707561190898</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707561190898</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix Background forum">
+      <option name="closed" value="true" />
+      <created>1707561570601</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707561570601</updated>
+    </task>
+    <task id="LOCAL-00004" summary="New Connectez + Fix quizz questions">
+      <option name="closed" value="true" />
+      <created>1707564618510</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707564618510</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Commit final S5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit final S5" />
+    <MESSAGE value="Register fixed" />
+    <MESSAGE value="Fix Background forum" />
+    <MESSAGE value="New Connectez + Fix quizz questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Connectez + Fix quizz questions" />
   </component>
 </project>

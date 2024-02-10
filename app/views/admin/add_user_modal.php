@@ -24,7 +24,6 @@
                     </div>
                     <div class="form-group">
                         <label for="avatar">Avatar :</label>
-                        <!-- Mettez à jour les valeurs d'option avec le chemin correct de l'avatar -->
                         <select name="avatar" id="avatar" class="form-control" required>
                             <option value="public/images/Captainamerica.png">Captain</option>
                             <option value="public/images/Deadpool.png">Deadpool</option>
@@ -32,7 +31,6 @@
                             <option value="public/images/spiderman.png">Spiderman</option>
                             <option value="public/images/Venom.png">Venom</option>
                             <option value="public/images/Wolverine.png">Wolverine</option>
-                            <!-- Ajoutez les autres options d'avatar ici -->
                         </select>
                     </div>
                 </div>

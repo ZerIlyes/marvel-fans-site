@@ -3,12 +3,13 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #B08C6CFF; /* Bleu */
+    background-color: #B08C6CFF;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     text-decoration: none;
+    font-family: 'Bangers', cursive;
     transition: background-color 0.3s ease;
 }
 
@@ -19,5 +20,5 @@
 }
 
 #redirectionButton:hover {
-    background-color: #0056b3; /* Un bleu plus foncé */
+    background-color: #0056b3;
 }

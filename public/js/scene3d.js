@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function onDocumentMouseDown(event) {
         if (isModalOpen) {
-            return; // Ne pas gérer les interactions 3D si la modal est ouverte
+            return;
         }
 
         var mouse = new THREE.Vector2();
@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('mousedown', onDocumentMouseDown, false);
 
-    var isModalOpen = false; // Variable pour suivre si une modal est ouverte
-    var isLoginModalOpen = false; // Variable pour suivre si la modal de connexion est ouverte
-    var isSignupModalOpen = false; // Variable pour suivre si la modal d'inscription est ouverte
+    var isModalOpen = false;
+    var isLoginModalOpen = false;
+    var isSignupModalOpen = false;
 
     // Fonction pour désactiver les contrôles de la caméra lorsque la modal de connexion est ouverte
     $('#loginModal').on('shown.bs.modal', function () {

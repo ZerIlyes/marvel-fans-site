@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mon Compte</title>
-    <!-- Incluez les fichiers CSS Bootstrap ici -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="public/css/redirection.css">
 </head>
@@ -20,7 +19,6 @@
                     <!-- Afficher l'avatar actuel de l'utilisateur -->
                     <img src="<?php echo htmlspecialchars($avatarPath); ?>" alt="Avatar actuel" width=64 class="img-fluid mb-3">
                     <p><strong>Nom d'utilisateur :</strong> <?php echo htmlspecialchars($_SESSION['username']); ?></p>
-                    <!-- Dans moncompte_view.php -->
                     <p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?></p>
 
                 </div>
@@ -40,7 +38,6 @@
                     <option value="public/images/spiderman.png">Spiderman</option>
                     <option value="public/images/Venom.png">Venom</option>
                     <option value="public/images/Wolverine.png">Wolverine</option>
-                    <!-- Ajoutez les autres options d'avatar ici -->
                 </select>
                 <!-- Aperçu de l'avatar sélectionné -->
                 <img id="avatarPreview" src="public/images/Captainamerica.png" alt="Selected Avatar Preview" width=150px height=150px class="img-fluid mb-3" />
@@ -75,7 +72,7 @@
         </div>
     </div>
 </div>
-<!-- Incluez les fichiers JavaScript Bootstrap ici -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -3,7 +3,7 @@ require_once 'admin.php';
 require_once '../config.php';
 
 $user_id = $_GET["user_id"];
-
+// Amgad.
 // Récupérer les informations de l'utilisateur depuis la base de données
 $user_query = $conn->query("SELECT username FROM users WHERE user_id = $user_id");
 $user = $user_query->fetch_assoc();
@@ -24,10 +24,9 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- ... incluez vos balises head ... -->
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Bangers', cursive;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;

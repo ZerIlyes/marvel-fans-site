@@ -1,14 +1,14 @@
 body {
-    background-color: #f4f0e3; /* Couleur de fond marron clair */
-    background-image: url('../images/Fond_forum.webp'); /* Ajoutez le chemin de votre image de fond */
-    background-size: cover; /* Ajustez la taille de l'image pour couvrir tout le corps de la page */
-    background-repeat: no-repeat; /* Empêchez la répétition de l'image de fond */
+    background-color: #f4f0e3;
+    background-image: url('../images/Fond_forum.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: 'Bangers', cursive;
 }
 
 .container {
-    background-color: #e2c4a4; /* Fond de la vignette en marron clair */
-    border-radius: 10px; /* Coins arrondis */
+    background-color: #e2c4a4;
+    border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
 }

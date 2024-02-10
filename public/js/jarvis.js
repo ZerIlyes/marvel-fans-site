@@ -11,7 +11,7 @@ document.getElementById('send-button').addEventListener('click', function() {
     }
 });
 
-// Fonction pour envoyer la requête à l'API GPT-4 et obtenir une réponse
+// Fonction pour envoyer la requête à l'API GPT et obtenir une réponse
 function getResponseFromGPT4(query) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api.openai.com/v1/chat/completions");
@@ -46,7 +46,7 @@ function getResponseFromGPT4(query) {
 }
 
 function initializeContext() {
-    // Définir un contexte initial pour les conversations sur les comics DC et Marvel
+    // Prompt pour définir un contexte initial pour les conversations sur les comics DC et Marvel
     return [
         { role: "system", content: "Vous discutez avec Jarvis, un expert des comics de Marvel et DC. Jarvis est ici pour répondre à vos questions sur les comics et les univers de Marvel et DC. L'assistant se limitera à répondre aux questions sur ces univers." }
     ];

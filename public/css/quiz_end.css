@@ -1,14 +1,14 @@
 /* quiz_end.css */
 body {
     font-family: 'Bangers', cursive;
-    background-image: url('../images/questions.png'); /* Assurez-vous que le chemin est correct */
+    background-image: url('../images/questions.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
 .quiz-end-container {
-    background-color: rgb(231, 182, 149); /* Fond blanc avec une transparence */
+    background-color: rgb(231, 182, 149);
     border-radius: 15px;
     padding: 20px;
     width: 40% !important;

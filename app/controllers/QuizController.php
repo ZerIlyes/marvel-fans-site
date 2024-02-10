@@ -16,7 +16,6 @@ class QuizController
     {
         $quizzes = $this->model->getAllQuizzes();
 
-        // Fixed the path with __DIR__
         require_once 'app/views/quiz/quiz_list_view.php';
     }
 
@@ -65,7 +64,7 @@ class QuizController
             $current_question_id = $_SESSION['questions'][$_SESSION['current_question_index']]['question_id'];
 
             if ($this->model->checkIfOptionIsCorrect($current_question_id, $selected_option_id)) {
-                $_SESSION['score'] += 100; // Update score if the answer is correct.
+                $_SESSION['score'] += 100;
             }
 
             $_SESSION['current_question_index']++;
@@ -99,7 +98,6 @@ class QuizController
         $finalScore = $_SESSION['score'];
         $quizId = $_SESSION['quiz_id'];
 
-        // Assurez-vous que la méthode updateQuizScore est correctement appelée ici
         $this->model->updateQuizScore($userId, $quizId, $finalScore);
         $leaderboardData = $this->model->getLeaderboardData($quizId);
 

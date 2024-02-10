@@ -15,17 +15,17 @@
         <div class="review-form-box">
             <h2 class="review-title">Écrire une Critique</h2>
             <form action="index.php?action=write_review" method="post">
-                <div class="form-group review-title-div"> <!-- Ajoutez la classe review-title-div ici -->
+                <div class="form-group review-title-div">
                     <label for="movie_series_title">Titre du film ou de la série :</label>
                     <input type="text" id="movie_series_title" name="movie_series_title" class="form-control" required>
                 </div>
-                <div class="form-group review-textarea-div"> <!-- Ajoutez la classe review-textarea-div ici -->
+                <div class="form-group review-textarea-div">
                     <label for="review">Votre critique :</label>
                     <textarea id="review" name="review" rows="4" cols="50" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
                     <label>Note :</label>
-                    <div class="rating-stars"> <!-- Ajoutez la classe rating-stars ici -->
+                    <div class="rating-stars">
                         <i class="fa fa-star" data-value="1"></i>
                         <i class="fa fa-star" data-value="2"></i>
                         <i class="fa fa-star" data-value="3"></i>
@@ -40,7 +40,7 @@
         </div>
     </div>
 
-    <!-- Display of existing reviews -->
+
     <div class="review-container">
         <div class="review-box">
             <?php if (!empty($reviews)): ?>

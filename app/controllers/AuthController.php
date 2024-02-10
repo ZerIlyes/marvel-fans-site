@@ -53,7 +53,7 @@ class AuthController {
         session_start();
         session_destroy(); // Cela effacera toutes les variables de session
         header('Location: index.php'); // Redirige vers la page d'accueil
-        exit(); // Assurez-vous que le script s'arrête après la redirection
+        exit();
     }
 
 }

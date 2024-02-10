@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let stars = document.querySelectorAll('.rating-stars .fa'); // Utilisez .rating-stars
+    let stars = document.querySelectorAll('.rating-stars .fa');
     let ratingInput = document.getElementById('inputRating');
-    let currentRating = 1; // Démarre avec une étoile allumée par défaut
+    let currentRating = 1;
 
-    // Initialisation
     updateStars(currentRating);
     ratingInput.value = currentRating;
 

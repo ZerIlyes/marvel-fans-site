@@ -2,11 +2,11 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Bangers', cursive;
 }
 
 .bg-image {
-    background-image: url('../images/bd.png'); /* Ensure this is the correct path to your image */
+    background-image: url('../images/bd.png');
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -18,7 +18,7 @@ body, html {
 }
 
 .chat-interface {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white for chat interface */
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     font-family: 'Bangers', cursive;
     margin: auto;
@@ -35,20 +35,20 @@ body, html {
     height: 300px;
     overflow-y: auto;
     font-family: 'Bangers', cursive;
-    background-color: #F5F5DC; /* Off-white beige background for chat container */
-    border: 1px solid #926F5B; /* Medium brown border */
+    background-color: #F5F5DC;
+    border: 1px solid #926F5B;
     border-radius: 4px;
     padding: 10px;
 }
 
 #user-input {
-    width: calc(100% - 20px); /* Subtract padding */
+    width: calc(100% - 20px);
     padding: 10px;
     margin-top: 10px;
     box-sizing: border-box;
     border-radius: 4px;
-    border: 1px solid #926F5B; /* Medium brown border */
-    background-color: #F5F5DC; /* Off-white beige background */
+    border: 1px solid #926F5B;
+    background-color: #F5F5DC;
     font-family: 'Bangers', cursive;
 }
 
@@ -57,7 +57,7 @@ body, html {
     padding: 10px 20px;
     margin-top: 10px;
     border-radius: 4px;
-    background-color: #8A3324; /* Burnt umber for button */
+    background-color: #8A3324;
     border: none;
     color: white;
     cursor: pointer;
@@ -67,10 +67,10 @@ body, html {
 }
 
 #send-button:hover {
-    background-color: #5C4033; /* Deep brown for button hover */
+    background-color: #5C4033;
 }
 
-/* Chat message styles */
+
 .chat-message {
     display: flex;
     align-items: flex-end;
@@ -78,8 +78,8 @@ body, html {
 }
 
 .chat-message .avatar {
-    width: 40px; /* Small avatar size */
-    height: 40px; /* Small avatar size */
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -87,13 +87,12 @@ body, html {
 .chat-message p {
     margin: 0;
     padding: 8px 12px;
-    background: #F5F5DC; /* Off-white beige background for messages */
+    background: #F5F5DC;
     border-radius: 10px;
-    border: 1px solid #926F5B; /* Medium brown border */
+    border: 1px solid #926F5B;
     max-width: 70%;
 }
 
-/* Differentiating between user and Jarvis messages */
 .user-message {
     flex-direction: row-reverse;
 }

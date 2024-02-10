@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérez le topic_id depuis le formulaire POST
     $topic_id = $_POST['topic_id'];
 
-    // Assurez-vous que $user_id est défini. Vous devez peut-être ajuster cela en fonction de votre logique d'authentification
     $user_id = $_SESSION["user_id"] ?? null;
 
     // Vérifiez les autorisations de suppression ici (par exemple, si l'utilisateur est l'auteur du sujet)

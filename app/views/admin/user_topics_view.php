@@ -3,7 +3,7 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="public/js/js.js"></script>
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/user_topics_admin.css">
     <link rel="stylesheet" href="public/css/redirection.css">
     <?php include 'public/redirection.php'; ?>
 </head>
