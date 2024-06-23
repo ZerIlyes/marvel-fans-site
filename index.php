@@ -10,6 +10,8 @@ require_once 'app/controllers/ReviewController.php';
 require_once 'app/controllers/ForumController.php';
 require_once 'app/controllers/UserTopicsController.php';
 require_once 'app/controllers/AdminController.php';
+require_once 'app/controllers/AdminController.php';
+
 $adminController = new AdminController();
 $reviewController = new ReviewController();
 $authController = new AuthController();
